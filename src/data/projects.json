@@ -1,0 +1,94 @@
+[
+  {
+    "id": "copec-ffaa-platform",
+    "title": "Enterprise Energy Platform",
+    "group": "Platform Engineering",
+    "context": "Energy sector",
+    "role": "Fullstack contributor",
+    "priority": 4,
+    "type": "Work Case",
+    "status": "Active contribution",
+    "statusVariant": "applied",
+    "description": "Plataforma empresarial del sector energía con participación fullstack enfocada en automatización, operación y mejora continua.",
+    "contribution": ["Frontend", "Backend"],
+    "impact": ["Mejora continua", "Automatización", "Integración"],
+    "stack": ["Angular", "NgRx", "Azure", "AWS", "Serverless"],
+    "highlights": [
+      "Evolución de flujos de interfaz y experiencia operativa.",
+      "Soporte a servicios backend y automatización.",
+      "Integraciones y despliegues en entorno empresarial."
+    ],
+    "repositoryUrl": "",
+    "demoUrl": "",
+    "icon": "MonitorCog"
+  },
+  {
+    "id": "tct-tae-platform",
+    "title": "Enterprise Mobility Platform",
+    "group": "Business Systems",
+    "context": "Mobility operations",
+    "role": "Fullstack contributor",
+    "priority": 1,
+    "type": "Work Case",
+    "status": "Platform support",
+    "statusVariant": "learning",
+    "description": "Plataforma de movilidad empresarial con participación transversal en interfaz, integración y soporte técnico.",
+    "contribution": ["Frontend", "Backend"],
+    "impact": ["UX operativa", "Integración de servicios", "Mejoras técnicas"],
+    "stack": ["Angular", "Node.js", "Integration", "Cloud", "Automation"],
+    "highlights": [
+      "Ajustes de experiencia de usuario y operación.",
+      "Colaboración en integración de componentes y servicios.",
+      "Soporte a mejoras técnicas del ecosistema."
+    ],
+    "repositoryUrl": "",
+    "demoUrl": "",
+    "icon": "Radar"
+  },
+  {
+    "id": "neotac-platform",
+    "title": "Enterprise Cloud Platform",
+    "group": "Platform Engineering",
+    "context": "Cloud services",
+    "role": "Fullstack contributor",
+    "priority": 3,
+    "type": "Work Case",
+    "status": "Active contribution",
+    "statusVariant": "applied",
+    "description": "Plataforma empresarial cloud con desarrollo fullstack orientado a servicios, frontend modular y despliegue en nube.",
+    "contribution": ["Frontend", "Backend"],
+    "impact": ["Componentes reutilizables", "Despliegue cloud", "Soporte por ambiente"],
+    "stack": ["Angular 18", "Bootstrap", "PrimeNG", "Serverless", "AWS"],
+    "highlights": [
+      "Evolución de interfaz y componentes reutilizables.",
+      "Integración con servicios backend y entornos cloud.",
+      "Soporte a despliegue y operación por ambiente."
+    ],
+    "repositoryUrl": "",
+    "demoUrl": "",
+    "icon": "Workflow"
+  },
+  {
+    "id": "cupon-ecosystem",
+    "title": "Enterprise Loyalty Ecosystem",
+    "group": "Business Systems",
+    "context": "Loyalty and administration",
+    "role": "Fullstack contributor",
+    "priority": 2,
+    "type": "Work Case",
+    "status": "Multi-repo contribution",
+    "statusVariant": "operational",
+    "description": "Ecosistema empresarial de fidelización y administración con APIs, backoffice y frentes web para operación interna.",
+    "contribution": ["Frontend", "Backend"],
+    "impact": ["APIs de negocio", "Backoffice operativo", "Flujos de datos"],
+    "stack": [".NET", "Angular", "Web Admin", "APIs", "SQL"],
+    "highlights": [
+      "Trabajo sobre APIs y servicios de negocio.",
+      "Soporte a interfaces administrativas y web.",
+      "Optimización de flujos operativos y de datos."
+    ],
+    "repositoryUrl": "",
+    "demoUrl": "",
+    "icon": "Server"
+  }
+]

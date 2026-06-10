@@ -1,0 +1,9 @@
+[
+  { "labelEs": "Perfil", "labelEn": "Profile", "href": "#profile", "visible": true },
+  { "labelEs": "Enfoque", "labelEn": "Focus", "href": "#focus", "visible": true },
+  { "labelEs": "Capacidades", "labelEn": "Capabilities", "href": "#skills", "visible": true },
+  { "labelEs": "Certificaciones", "labelEn": "Certifications", "href": "#credentials", "visible": true },
+  { "labelEs": "Experiencia", "labelEn": "Experience", "href": "#experience", "visible": true },
+  { "labelEs": "CV Profesional", "labelEn": "Professional Resume", "href": "#cv", "visible": true },
+  { "labelEs": "Contacto", "labelEn": "Contact", "href": "#contact", "visible": true }
+]

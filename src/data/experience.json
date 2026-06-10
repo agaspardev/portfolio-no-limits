@@ -1,0 +1,126 @@
+[
+  {
+    "id": "innobyte-integrador-sistemas",
+    "company": "Innobyte S.A.",
+    "roleEs": "Integrador de Sistemas",
+    "roleEn": "Systems Integrator",
+    "periodEs": "Actualidad",
+    "periodEn": "Present",
+    "periodLabelEs": "Rol actual",
+    "periodLabelEn": "Current role",
+    "location": "Chile",
+    "typeEs": "Rol actual",
+    "typeEn": "Current role",
+    "isCurrent": true,
+    "summaryEs": "Rol orientado a integración, calidad, automatización y mejora continua en aplicaciones web.",
+    "summaryEn": "Role focused on integration, quality, automation, and continuous improvement in web applications.",
+    "stackEs": [".NET", "Angular", "Python", "IA", "Scrum", "Xray", "GitHub Workflows"],
+    "stackEn": [".NET", "Angular", "Python", "AI", "Scrum", "Xray", "GitHub Workflows"],
+    "impactEs": [
+      "Integración y mejora continua en aplicaciones web.",
+      "Automatización de tareas y flujos técnicos.",
+      "Apoyo a prácticas ágiles y calidad de desarrollo.",
+      "Trabajo con arquitectura y flujos de desarrollo."
+    ],
+    "impactEn": [
+      "Integration and continuous improvement in web applications.",
+      "Automation of tasks and technical flows.",
+      "Support for agile practices and development quality.",
+      "Work with architecture and development workflows."
+    ],
+    "categoryEs": ["Integración", "Desarrollo", "Automatización", "Ágil"],
+    "categoryEn": ["Integration", "Development", "Automation", "Agile"]
+  },
+  {
+    "id": "innobyte-fullstack",
+    "company": "Innobyte S.A.",
+    "roleEs": "Desarrollador Full-Stack",
+    "roleEn": "Full-Stack Developer",
+    "periodEs": "Periodo anterior",
+    "periodEn": "Previous period",
+    "periodLabelEs": "Experiencia previa",
+    "periodLabelEn": "Previous experience",
+    "location": "Chile",
+    "typeEs": "Experiencia profesional",
+    "typeEn": "Professional experience",
+    "isCurrent": false,
+    "summaryEs": "Participación en desarrollo web full-stack, integrando frontend, backend y servicios cloud.",
+    "summaryEn": "Participation in full-stack web development, integrating frontend, backend, and cloud services.",
+    "stackEs": ["Angular", "Node.js", "PostgreSQL", "AWS", "Lambda", "DynamoDB", "S3"],
+    "stackEn": ["Angular", "Node.js", "PostgreSQL", "AWS", "Lambda", "DynamoDB", "S3"],
+    "impactEs": [
+      "Desarrollo de soluciones web full-stack.",
+      "Integración frontend/backend.",
+      "Uso de servicios cloud AWS.",
+      "Mejora de procesos de gestión e incidencias."
+    ],
+    "impactEn": [
+      "Built full-stack web solutions.",
+      "Integrated frontend and backend.",
+      "Used AWS cloud services.",
+      "Improved management and incident workflows."
+    ],
+    "categoryEs": ["Full-Stack", "Cloud", "Desarrollo web"],
+    "categoryEn": ["Full-Stack", "Cloud", "Web development"]
+  },
+  {
+    "id": "traza-programador",
+    "company": "Traza Ltda.",
+    "roleEs": "Programador",
+    "roleEn": "Developer",
+    "periodEs": "Periodo anterior",
+    "periodEn": "Previous period",
+    "periodLabelEs": "Experiencia previa",
+    "periodLabelEn": "Previous experience",
+    "location": "Chile",
+    "typeEs": "Experiencia profesional",
+    "typeEn": "Professional experience",
+    "isCurrent": false,
+    "summaryEs": "Desarrollo de aplicaciones web y soluciones internas para optimización de procesos administrativos.",
+    "summaryEn": "Developed web applications and internal solutions to optimize administrative processes.",
+    "stackEs": ["Aplicaciones web", "Procesos administrativos", "Soporte TI", "Productividad"],
+    "stackEn": ["Web applications", "Administrative processes", "IT support", "Productivity"],
+    "impactEs": [
+      "Desarrollo de soluciones internas.",
+      "Optimización de procesos administrativos.",
+      "Apoyo tecnológico a usuarios y áreas internas."
+    ],
+    "impactEn": [
+      "Built internal solutions.",
+      "Optimized administrative processes.",
+      "Provided technical support to users and internal teams."
+    ],
+    "categoryEs": ["Desarrollo web", "Herramientas internas"],
+    "categoryEn": ["Web development", "Internal tools"]
+  },
+  {
+    "id": "coasin-vulnerabilidades",
+    "company": "COASIN Group",
+    "roleEs": "Analista de Vulnerabilidades",
+    "roleEn": "Vulnerability Analyst",
+    "periodEs": "Periodo anterior",
+    "periodEn": "Previous period",
+    "periodLabelEs": "Experiencia previa",
+    "periodLabelEn": "Previous experience",
+    "location": "Chile",
+    "typeEs": "Experiencia profesional",
+    "typeEn": "Professional experience",
+    "isCurrent": false,
+    "summaryEs": "Experiencia en análisis de vulnerabilidades, seguridad Windows y soporte en entornos empresariales.",
+    "summaryEn": "Experience in vulnerability analysis, Windows security, and support in enterprise environments.",
+    "stackEs": ["Análisis de vulnerabilidades", "Windows Security", "Hardening", "Infraestructura"],
+    "stackEn": ["Vulnerability analysis", "Windows security", "Hardening", "Infrastructure"],
+    "impactEs": [
+      "Evaluación de vulnerabilidades.",
+      "Participación en proyectos de infraestructura.",
+      "Apoyo técnico en ambientes críticos."
+    ],
+    "impactEn": [
+      "Assessed vulnerabilities.",
+      "Participated in infrastructure projects.",
+      "Provided technical support in critical environments."
+    ],
+    "categoryEs": ["Seguridad", "Infraestructura"],
+    "categoryEn": ["Security", "Infrastructure"]
+  }
+]

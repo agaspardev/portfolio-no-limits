@@ -1,0 +1,40 @@
+{
+  "siteName": "NO LIMITS Control Center",
+  "siteTitle": "Antonio Gaspar | Sistemas, Cloud, DevOps e Integración",
+  "siteDescription": "Portafolio profesional de Antonio Gaspar, orientado a desarrollo web, integración de sistemas, cloud, DevOps, IA y ciberseguridad.",
+  "language": "es",
+  "locale": "es_CL",
+  "theme": "dark",
+  "concept": "Cloud Operations Portfolio",
+  "author": "Antonio Gaspar",
+  "keywords": [
+    "Desarrollo Full-Stack",
+    "Cloud",
+    "AWS",
+    "Google Cloud",
+    "DevOps",
+    "IA",
+    "Ciberseguridad",
+    "Integración de Sistemas",
+    "Automatización",
+    "Chile"
+  ],
+  "ui": {
+    "defaultLocale": "es",
+    "sections": {
+      "profile": true,
+      "focus": true,
+      "skills": true,
+      "experience": true,
+      "credentials": true,
+      "cv": true,
+      "contact": true,
+      "projects": true
+    }
+  },
+  "openGraph": {
+    "url": "https://no-limits.vercel.app",
+    "image": "/images/og-preview.png",
+    "type": "website"
+  }
+}

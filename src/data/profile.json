@@ -1,0 +1,49 @@
+{
+  "name": "Antonio Gaspar",
+  "shortName": "Antonio Gaspar",
+  "role": "Profesional de Sistemas y Desarrollo",
+  "currentRole": "Integrador de Sistemas",
+  "currentCompany": "Innobyte S.A.",
+  "location": "Gran Santiago, Chile",
+  "heroEyebrow": "NO LIMITS CONTROL CENTER",
+  "tagline": "Soluciones Cloud, Automatización e Integración",
+  "taglineSub": "Cloud · DevOps · IA · Ciberseguridad",
+  "summary": "Profesional de Desarrollo y Sistemas con experiencia en desarrollo web, integración de sistemas y mejora operativa. Actualmente enfocado en soluciones cloud, automatización, infraestructura, DevOps, IA y ciberseguridad.",
+  "about": [
+    "Soy Profesional de Desarrollo y Sistemas, con experiencia en desarrollo web, integración de sistemas y mejora operativa.",
+    "Mi enfoque actual está orientado a cloud, automatización, infraestructura, DevOps, IA y ciberseguridad.",
+    "Me interesa construir soluciones técnicas eficientes, automatizar procesos y aportar valor en entornos donde la tecnología y la mejora continua impulsan el crecimiento del negocio."
+  ],
+  "profileImage": {
+    "src": "/images/profile/antonio-profile.jpg",
+    "alt": "Antonio Gaspar, profesional de sistemas y desarrollo",
+    "placeholder": "AG"
+  },
+  "status": {
+    "label": "Continuous Improvement",
+    "variant": "operational"
+  },
+  "focusAreas": [
+    "Cloud",
+    "DevOps",
+    "AI",
+    "Cybersecurity",
+    "Systems Integration",
+    "Automation"
+  ],
+  "heroChips": [
+    { "label": "Cloud Ready", "icon": "Cloud" },
+    { "label": "DevOps Mindset", "icon": "GitBranch" },
+    { "label": "Secure by Design", "icon": "ShieldCheck" },
+    { "label": "Full-Stack Engineering", "icon": "Code2" },
+    { "label": "Automation Focus", "icon": "Zap" },
+    { "label": "AI Enabled", "icon": "Sparkles" }
+  ],
+  "operationalSignature": [
+    { "order": "01", "text": "Automatizar antes de repetir" },
+    { "order": "02", "text": "Integrar antes de aislar" },
+    { "order": "03", "text": "Medir antes de escalar" },
+    { "order": "04", "text": "Asegurar desde el diseño" },
+    { "order": "05", "text": "Documentar para transferir conocimiento" }
+  ]
+}

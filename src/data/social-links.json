@@ -1,0 +1,79 @@
+[
+  {
+    "id": "linkedin",
+    "labelEs": "LinkedIn",
+    "labelEn": "LinkedIn",
+    "url": "https://www.linkedin.com/in/antoniogasparr",
+    "icon": "linkedin",
+    "type": "professional",
+    "isPrimary": true,
+    "descriptionEs": "Perfil profesional",
+    "descriptionEn": "Professional profile"
+  },
+  {
+    "id": "instagram",
+    "labelEs": "Instagram",
+    "labelEn": "Instagram",
+    "url": "https://www.instagram.com/gass_parr/",
+    "icon": "instagram",
+    "type": "professional",
+    "isPrimary": true,
+    "descriptionEs": "Contenido personal y profesional",
+    "descriptionEn": "Personal and professional content"
+  },
+  {
+    "id": "credly",
+    "labelEs": "Credly",
+    "labelEn": "Credly",
+    "url": "https://www.credly.com/users/antonio-gaspar.d79e2688/badges#credly",
+    "icon": "Award",
+    "type": "credentials",
+    "isPrimary": true,
+    "descriptionEs": "Credenciales verificadas",
+    "descriptionEn": "Verified credentials"
+  },
+  {
+    "id": "badgeclaimed",
+    "labelEs": "BadgeClaimed",
+    "labelEn": "BadgeClaimed",
+    "url": "https://profiles.badgeclaimed.com/user-353926/index.html",
+    "icon": "BadgeCheck",
+    "type": "credentials",
+    "isPrimary": true,
+    "descriptionEs": "Insignias profesionales",
+    "descriptionEn": "Professional badges"
+  },
+  {
+    "id": "github",
+    "labelEs": "GitHub",
+    "labelEn": "GitHub",
+    "url": "",
+    "icon": "Github",
+    "type": "code",
+    "isPrimary": false,
+    "descriptionEs": "Repositorios de código",
+    "descriptionEn": "Code repositories"
+  },
+  {
+    "id": "email",
+    "labelEs": "Email",
+    "labelEn": "Email",
+    "url": "",
+    "icon": "Mail",
+    "type": "contact",
+    "isPrimary": false,
+    "descriptionEs": "Contacto directo",
+    "descriptionEn": "Direct contact"
+  },
+  {
+    "id": "calendly",
+    "labelEs": "Calendly",
+    "labelEn": "Calendly",
+    "url": "",
+    "icon": "Calendar",
+    "type": "booking",
+    "isPrimary": false,
+    "descriptionEs": "Agendar reunión",
+    "descriptionEn": "Schedule a meeting"
+  }
+]
