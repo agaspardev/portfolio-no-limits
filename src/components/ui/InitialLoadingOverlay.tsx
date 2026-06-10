@@ -23,7 +23,7 @@ export function InitialLoadingOverlay() {
   );
 
   useEffect(() => {
-    const navType = window.performance.getEntriesByType("navigation")[0]?.type;
+    const navType = (window.performance.getEntriesByType("navigation")[0] as PerformanceNavigationTiming | undefined)?.type;
     const shouldShow = navType === "reload" || !window.sessionStorage.getItem("no-limits-intro-seen");
     if (!shouldShow) return;
 
@@ -83,21 +83,20 @@ export function InitialLoadingOverlay() {
 
   return (
     <AnimatePresence>
-      {phase !== "hidden" && (
-        <motion.div
-          initial={{ opacity: 1 }}
-          animate={{ opacity: phase === "fade" ? 0 : 1 }}
-          exit={{ opacity: 0 }}
-          transition={{ duration: 1, ease: "easeOut" }}
-          className="fixed inset-0 z-[100] overflow-hidden"
-          style={{
-            background:
-              theme === "dark"
-                ? "linear-gradient(180deg, rgba(0,0,0,1), rgba(2,6,23,1))"
-                : "linear-gradient(180deg, rgba(255,255,255,1), rgba(241,245,249,1))",
-          }}
-          aria-label="Loading intro"
-        >
+      <motion.div
+        initial={{ opacity: 1 }}
+        animate={{ opacity: phase === "fade" ? 0 : 1 }}
+        exit={{ opacity: 0 }}
+        transition={{ duration: 1, ease: "easeOut" }}
+        className="fixed inset-0 z-[100] overflow-hidden"
+        style={{
+          background:
+            theme === "dark"
+              ? "linear-gradient(180deg, rgba(0,0,0,1), rgba(2,6,23,1))"
+              : "linear-gradient(180deg, rgba(255,255,255,1), rgba(241,245,249,1))",
+        }}
+        aria-label="Loading intro"
+      >
           <div className="flex h-full w-full items-center justify-center px-6 text-center">
             {phase === "error" && (
               <motion.p
@@ -147,8 +146,7 @@ export function InitialLoadingOverlay() {
 
             {/* states phase removed on request */}
           </div>
-        </motion.div>
-      )}
+      </motion.div>
     </AnimatePresence>
   );
 }

@@ -3,7 +3,7 @@
 import { useEffect, useMemo, useState } from "react";
 
 interface TypewriterTextProps {
-  phrases: string[];
+  phrases: readonly string[];
   typingSpeed?: number;
   deletingSpeed?: number;
   pauseMs?: number;

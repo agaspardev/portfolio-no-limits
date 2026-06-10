@@ -61,7 +61,7 @@ export function CredentialVaultSection({ cv }: CredentialVaultSectionProps) {
   const { locale } = useLocale();
   const { theme } = useTheme();
   const t = copy[locale].sections.credentials;
-  const [activeFilter, setActiveFilter] = useState(t.filters.all);
+  const [activeFilter, setActiveFilter] = useState<string>(t.filters.all);
   const themeCardClass = theme === "dark"
     ? "rounded-2xl border border-slate-800/60 bg-slate-950/50 p-4"
     : "rounded-2xl border border-slate-200/80 bg-white/95 p-4";

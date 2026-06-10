@@ -1,6 +1,6 @@
 "use client";
 
-import { motion } from "framer-motion";
+import { motion, type Variants } from "framer-motion";
 import { FileDown, ChevronDown } from "lucide-react";
 import { ProfileNodeCard } from "@/components/ui/ProfileNodeCard";
 import { TypewriterText } from "@/components/ui/TypewriterText";
@@ -15,12 +15,11 @@ interface CommandCenterSectionProps {
   cv: CVData;
 }
 
-const itemVariants = {
+const itemVariants: Variants = {
   hidden: { opacity: 0, y: 20 },
   visible: {
     opacity: 1,
     y: 0,
-    transition: { duration: 0.5, ease: "easeOut" },
   },
 };
 
@@ -72,6 +71,7 @@ export function CommandCenterSection({ profile, cv }: CommandCenterSectionProps)
           >
             <motion.div
               variants={itemVariants}
+              transition={{ duration: 0.5, ease: "easeOut" }}
               className="mb-3 inline-flex items-center gap-2 rounded-full border px-3 py-1 text-[10px] font-mono uppercase tracking-[0.24em]"
               style={{
                 borderColor: theme === "dark" ? "rgba(34,211,238,0.22)" : "rgba(14,116,144,0.16)",
@@ -86,6 +86,7 @@ export function CommandCenterSection({ profile, cv }: CommandCenterSectionProps)
             {/* Headline */}
             <motion.h1
               variants={itemVariants}
+              transition={{ duration: 0.5, ease: "easeOut" }}
               className="text-4xl sm:text-5xl md:text-6xl font-bold leading-[1.08] mb-4"
               style={{ color: theme === "dark" ? "rgb(248,250,252)" : "rgb(15,23,42)" }}
             >
@@ -98,6 +99,7 @@ export function CommandCenterSection({ profile, cv }: CommandCenterSectionProps)
             {/* Role */}
             <motion.p
               variants={itemVariants}
+              transition={{ duration: 0.5, ease: "easeOut" }}
               className="text-xl md:text-2xl font-light mb-2 min-h-[2.5rem] md:min-h-[3rem] flex items-end"
               style={{ color: theme === "dark" ? "rgb(148,163,184)" : "rgb(51,65,85)" }}
             >
@@ -111,7 +113,7 @@ export function CommandCenterSection({ profile, cv }: CommandCenterSectionProps)
             </motion.p>
 
             {/* Tagline */}
-            <motion.div variants={itemVariants} className="mb-6">
+            <motion.div variants={itemVariants} transition={{ duration: 0.5, ease: "easeOut" }} className="mb-6">
               <p className="text-base" style={{ color: theme === "dark" ? "rgb(148,163,184)" : "rgb(51,65,85)" }}>{t.tagline}</p>
               <p className="text-sm mt-1 font-mono" style={{ color: theme === "dark" ? "rgb(100,116,139)" : "rgb(71,85,105)" }}>{t.taglineSub}</p>
             </motion.div>
@@ -119,6 +121,7 @@ export function CommandCenterSection({ profile, cv }: CommandCenterSectionProps)
             {/* Summary */}
             <motion.p
               variants={itemVariants}
+              transition={{ duration: 0.5, ease: "easeOut" }}
               className="text-base leading-relaxed max-w-2xl mb-8 border-l-2 border-cyan-400/30 pl-4"
               style={{ color: theme === "dark" ? "rgb(148,163,184)" : "rgb(51,65,85)" }}
             >
@@ -128,6 +131,7 @@ export function CommandCenterSection({ profile, cv }: CommandCenterSectionProps)
             {/* CTAs */}
             <motion.div
               variants={itemVariants}
+              transition={{ duration: 0.5, ease: "easeOut" }}
               className="flex flex-col sm:flex-row gap-3 mb-10"
             >
               <a
@@ -153,6 +157,7 @@ export function CommandCenterSection({ profile, cv }: CommandCenterSectionProps)
             {/* Hero chips */}
             <motion.div
               variants={itemVariants}
+              transition={{ duration: 0.5, ease: "easeOut" }}
               className="flex flex-wrap gap-2"
               role="list"
               aria-label={t.aria.chips}
