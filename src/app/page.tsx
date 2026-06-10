@@ -15,23 +15,28 @@ import { ProjectLabSection } from "@/components/sections/ProjectLabSection";
 import { CredentialVaultSection } from "@/components/sections/CredentialVaultSection";
 import { ProfessionalCVSection } from "@/components/sections/ProfessionalCVSection";
 import { ContactGatewaySection } from "@/components/sections/ContactGatewaySection";
-import type { Profile } from "@/types/portfolio";
+import type { CVData, ExperienceItem, Profile, Project, SkillGroup, SocialLink, SiteConfig } from "@/types/portfolio";
 
 export default function HomePage() {
-  const visibleSections = site.ui?.sections ?? {};
+  const visibleSections = (site as SiteConfig).ui?.sections ?? {};
   const typedProfile = profile as Profile;
+  const typedSkills = skills as SkillGroup[];
+  const typedExperience = experience as ExperienceItem[];
+  const typedProjects = projects as Project[];
+  const typedSocialLinks = socialLinks as SocialLink[];
+  const typedCv = cv as CVData;
 
   return (
     <>
-      <CommandCenterSection profile={typedProfile} cv={cv} />
+      <CommandCenterSection profile={typedProfile} cv={typedCv} />
       {visibleSections.profile !== false && <SystemProfileSection profile={typedProfile} />}
       {visibleSections.focus !== false && <CurrentFocusSection />}
-      {visibleSections.skills !== false && <CapabilityMatrixSection skills={skills} />}
-      {visibleSections.credentials !== false && <CredentialVaultSection cv={cv} />}
-      {visibleSections.experience !== false && <OperationalTimelineSection experience={experience} />}
-      {visibleSections.projects !== false && <ProjectLabSection projects={projects} />}
-      {visibleSections.cv !== false && <ProfessionalCVSection cv={cv} />}
-      {visibleSections.contact !== false && <ContactGatewaySection socialLinks={socialLinks} />}
+      {visibleSections.skills !== false && <CapabilityMatrixSection skills={typedSkills} />}
+      {visibleSections.credentials !== false && <CredentialVaultSection cv={typedCv} />}
+      {visibleSections.experience !== false && <OperationalTimelineSection experience={typedExperience} />}
+      {visibleSections.projects !== false && <ProjectLabSection projects={typedProjects} />}
+      {visibleSections.cv !== false && <ProfessionalCVSection cv={typedCv} />}
+      {visibleSections.contact !== false && <ContactGatewaySection socialLinks={typedSocialLinks} />}
     </>
   );
 }
