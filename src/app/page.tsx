@@ -15,14 +15,16 @@ import { ProjectLabSection } from "@/components/sections/ProjectLabSection";
 import { CredentialVaultSection } from "@/components/sections/CredentialVaultSection";
 import { ProfessionalCVSection } from "@/components/sections/ProfessionalCVSection";
 import { ContactGatewaySection } from "@/components/sections/ContactGatewaySection";
+import type { Profile } from "@/types/portfolio";
 
 export default function HomePage() {
   const visibleSections = site.ui?.sections ?? {};
+  const typedProfile = profile as Profile;
 
   return (
     <>
-      <CommandCenterSection profile={profile} cv={cv} />
-      {visibleSections.profile !== false && <SystemProfileSection profile={profile} />}
+      <CommandCenterSection profile={typedProfile} cv={cv} />
+      {visibleSections.profile !== false && <SystemProfileSection profile={typedProfile} />}
       {visibleSections.focus !== false && <CurrentFocusSection />}
       {visibleSections.skills !== false && <CapabilityMatrixSection skills={skills} />}
       {visibleSections.credentials !== false && <CredentialVaultSection cv={cv} />}
