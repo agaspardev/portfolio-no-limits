@@ -1,8 +1,9 @@
 "use client";
 
 import { useState } from "react";
+import type { FormEvent } from "react";
 import { motion } from "framer-motion";
-import { Send } from "lucide-react";
+import { Send, Loader2 } from "lucide-react";
 import { SectionContainer } from "@/components/layout/SectionContainer";
 import { SectionHeader } from "@/components/ui/SectionHeader";
 import { IconResolver } from "@/components/ui/IconResolver";
@@ -34,6 +35,54 @@ export function ContactGatewaySection({ socialLinks }: ContactGatewaySectionProp
       };
   const primaryLinks = socialLinks.filter((l) => l.isPrimary);
   const [form, setForm] = useState({ name: "", email: "", message: "" });
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [submitStatus, setSubmitStatus] = useState<"idle" | "success" | "error">("idle");
+  const [errorMessage, setErrorMessage] = useState("");
+
+  const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+
+    if (!form.name || !form.email || !form.message) {
+      setSubmitStatus("error");
+      setErrorMessage(t.feedback.fillAll);
+      return;
+    }
+
+    if (!/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(form.email)) {
+      setSubmitStatus("error");
+      setErrorMessage(t.feedback.invalidEmail);
+      return;
+    }
+
+    setIsSubmitting(true);
+    setSubmitStatus("idle");
+    setErrorMessage("");
+
+    try {
+      const response = await fetch("/api/contact", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(form),
+      });
+
+      const data = await response.json();
+
+      if (response.ok && data.success) {
+        setSubmitStatus("success");
+        setForm({ name: "", email: "", message: "" });
+      } else {
+        setSubmitStatus("error");
+        setErrorMessage(data.error || t.feedback.genericError);
+      }
+    } catch (error) {
+      setSubmitStatus("error");
+      setErrorMessage(t.feedback.networkError);
+    } finally {
+      setIsSubmitting(false);
+    }
+  };
 
   return (
     <SectionContainer id="contact" className="border-t border-slate-800/40">
@@ -53,7 +102,7 @@ export function ContactGatewaySection({ socialLinks }: ContactGatewaySectionProp
           transition={{ duration: 0.5 }}
         >
           <form
-            onSubmit={(e) => e.preventDefault()}
+            onSubmit={handleSubmit}
             className="surface-card p-6 space-y-5"
             aria-label={t.aria.form}
             style={{
@@ -126,14 +175,27 @@ export function ContactGatewaySection({ socialLinks }: ContactGatewaySectionProp
               type="submit"
               className="btn-primary w-full justify-center"
               aria-label={t.aria.button}
+              disabled={isSubmitting}
             >
-              <Send size={15} aria-hidden="true" />
-              {t.button}
+              {isSubmitting ? (
+                <Loader2 size={15} className="animate-spin" aria-hidden="true" />
+              ) : (
+                <Send size={15} aria-hidden="true" />
+              )}
+              {isSubmitting ? t.feedback.sending : t.button}
             </button>
 
-            <p className="text-[10px] text-center" style={{ color: theme === "dark" ? "rgb(100, 116, 139)" : "rgb(100, 116, 139)" }}>
-              {t.note}
-            </p>
+            {submitStatus === "success" && (
+              <div className="text-green-600 text-sm text-center">
+                {t.feedback.success}
+              </div>
+            )}
+
+            {submitStatus === "error" && (
+              <div className="text-red-600 text-sm text-center">
+                {errorMessage}
+              </div>
+            )}
           </form>
         </motion.div>
 
