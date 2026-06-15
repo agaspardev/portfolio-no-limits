@@ -156,6 +156,8 @@ export const copy = {
         feedback: {
           fillAll: "Por favor, completa todos los campos.",
           invalidEmail: "Por favor, ingresa un email válido.",
+          shortName: "El nombre debe tener al menos 2 caracteres.",
+          shortMessage: "El mensaje debe tener al menos 10 caracteres.",
           sending: "Enviando...",
           success: "¡Mensaje enviado con éxito! Te responderé pronto.",
           networkError: "Error de conexión. Verifica tu conexión e intenta de nuevo.",
@@ -336,6 +338,8 @@ export const copy = {
         feedback: {
           fillAll: "Please fill in all fields.",
           invalidEmail: "Please provide a valid email address.",
+          shortName: "Name must be at least 2 characters.",
+          shortMessage: "Message must be at least 10 characters.",
           sending: "Sending...",
           success: "Message sent successfully! I'll get back to you soon.",
           networkError: "Network error. Please check your connection and try again.",

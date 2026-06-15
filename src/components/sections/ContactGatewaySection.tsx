@@ -42,15 +42,31 @@ export function ContactGatewaySection({ socialLinks }: ContactGatewaySectionProp
   const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
 
-    if (!form.name || !form.email || !form.message) {
+    const trimmedName = form.name.trim();
+    const trimmedEmail = form.email.trim();
+    const trimmedMessage = form.message.trim();
+
+    if (!trimmedName || !trimmedEmail || !trimmedMessage) {
       setSubmitStatus("error");
       setErrorMessage(t.feedback.fillAll);
       return;
     }
 
-    if (!/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(form.email)) {
+    if (trimmedName.length < 2) {
+      setSubmitStatus("error");
+      setErrorMessage(t.feedback.shortName);
+      return;
+    }
+
+    if (!/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(trimmedEmail)) {
       setSubmitStatus("error");
       setErrorMessage(t.feedback.invalidEmail);
+      return;
+    }
+
+    if (trimmedMessage.length < 10) {
+      setSubmitStatus("error");
+      setErrorMessage(t.feedback.shortMessage);
       return;
     }
 
@@ -64,7 +80,11 @@ export function ContactGatewaySection({ socialLinks }: ContactGatewaySectionProp
         headers: {
           "Content-Type": "application/json",
         },
-        body: JSON.stringify(form),
+        body: JSON.stringify({
+          name: trimmedName,
+          email: trimmedEmail,
+          message: trimmedMessage,
+        }),
       });
 
       const data = await response.json();
