@@ -14,12 +14,12 @@
     "id": "instagram",
     "labelEs": "Instagram",
     "labelEn": "Instagram",
-    "url": "https://www.instagram.com/gass_parr/",
+    "url": "https://www.instagram.com/antoniogaspar.dev/",
     "icon": "instagram",
     "type": "professional",
     "isPrimary": true,
-    "descriptionEs": "Contenido personal y profesional",
-    "descriptionEn": "Personal and professional content"
+    "descriptionEs": "Contenido profesional",
+    "descriptionEn": "Professional content"
   },
   {
     "id": "credly",
