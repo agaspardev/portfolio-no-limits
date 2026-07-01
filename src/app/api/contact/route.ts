@@ -30,7 +30,7 @@ export async function POST(request: Request) {
     const safeEmail = escapeHtml(email);
     const safeMessage = escapeHtml(message);
 
-    const toEmails = (process.env.TO_EMAIL || "your-email@example.com")
+    const toEmails = (process.env.TO_EMAIL || "contacto@antoniogaspar.dev")
       .split(",")
       .map((e) => e.trim());
 
