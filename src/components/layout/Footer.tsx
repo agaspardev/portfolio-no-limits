@@ -4,6 +4,7 @@ import { IconResolver } from "@/components/ui/IconResolver";
 import { useLocale } from "@/components/providers/LocaleProvider";
 import { useTheme } from "@/components/providers/ThemeProvider";
 import { copy } from "@/data/copy";
+import { CREDENTIAL_LINKS } from "@/lib/constants";
 
 export function Footer() {
   const year = new Date().getFullYear();
@@ -49,7 +50,7 @@ export function Footer() {
           {/* Center — Credential links */}
           <div className="flex items-center gap-3">
             <a
-              href="https://www.linkedin.com/in/antoniogasparr/"
+              href={CREDENTIAL_LINKS.linkedin}
               target="_blank"
               rel="noreferrer"
               aria-label={t.linkedin}
@@ -59,7 +60,7 @@ export function Footer() {
               <IconResolver name="linkedin" size={16} className="text-inherit" />
             </a>
             <a
-              href="https://www.instagram.com/gass_parr/"
+              href="https://www.instagram.com/antoniogaspar.dev/"
               target="_blank"
               rel="noreferrer"
               aria-label="Instagram"

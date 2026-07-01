@@ -23,13 +23,13 @@ export function ContactGatewaySection({ socialLinks }: ContactGatewaySectionProp
   const linkDescription: Record<string, string> = locale === "es"
     ? {
         linkedin: "Perfil profesional",
-        instagram: "Contenido personal y profesional",
+        instagram: "Contenido profesional",
         credly: "Credenciales verificadas",
         badgeclaimed: "Insignias profesionales",
       }
     : {
         linkedin: "Professional profile",
-        instagram: "Personal and professional content",
+        instagram: "Professional content",
         credly: "Verified credentials",
         badgeclaimed: "Professional badges",
       };
