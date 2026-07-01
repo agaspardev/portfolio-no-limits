@@ -53,6 +53,7 @@ export function ProfileNodeCard({ profile }: ProfileNodeCardProps) {
             fill
             sizes="96px"
             className="z-10 object-cover"
+            style={{ objectPosition: "center 24%" }}
             onError={() => {}}
             priority
           />
