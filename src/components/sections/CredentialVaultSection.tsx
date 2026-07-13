@@ -78,6 +78,10 @@ export function CredentialVaultSection({ cv }: CredentialVaultSectionProps) {
         "CertiProf, vigente hasta 04/06/2029, verificada.": "CertiProf, valid until 06/04/2029, verified.",
         "CertiProf, vigente hasta 02/06/2029, verificada.": "CertiProf, valid until 06/02/2029, verified.",
         "CertiProf, emitida 02/06/2026, verificada.": "CertiProf, issued 06/02/2026, verified.",
+        "CertiProf, vigente hasta 11/07/2029, verificada.": "CertiProf, valid until 07/11/2029, verified.",
+        "CertiProf, vigente hasta 02/07/2029, verificada.": "CertiProf, valid until 07/02/2029, verified.",
+        "CertiProf, emitida 06/06/2026, vigente hasta 06/06/2027, verificada.": "CertiProf, issued 06/06/2026, valid until 06/06/2027, verified.",
+        "CertiProf, vigente hasta 06/07/2029, verificada.": "CertiProf, valid until 07/06/2029, verified.",
       };
   const groupLabels: Record<string, string> = locale === "es"
     ? {

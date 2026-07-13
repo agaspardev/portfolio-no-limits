@@ -41,6 +41,13 @@
           "detail": "CertiProf, vigente hasta 06/06/2029, verificada.",
           "tag": "Verified",
           "filters": ["Cloud", "DevOps"]
+        },
+        {
+          "title": "DevOps Foundation Professional Certification (DFPC)",
+          "href": "https://www.credly.com/badges/5ed19551-3bea-474d-a631-b4cfaf5919e5",
+          "detail": "CertiProf, vigente hasta 11/07/2029, verificada.",
+          "tag": "Verified",
+          "filters": ["Cloud", "DevOps"]
         }
       ]
     },
@@ -61,7 +68,7 @@
       "items": [
         {
           "title": "Microsoft Certified: Azure AI Fundamentals",
-          "href": "https://www.credly.com/badges/de2ce38d-8ad4-4d81-8604-894267bf3edf",
+          "href": "https://www.credly.com/badges/8ac4ea70-a9bf-4607-9bbc-e095a9da67e1",
           "detail": "Microsoft, emitida 06/06/2026, verificada.",
           "tag": "Verified",
           "filters": ["Cloud", "AI", "Microsoft"]
@@ -70,6 +77,13 @@
           "title": "Artificial Intelligence Professional Certification (CAIPC)",
           "href": "https://www.credly.com/badges/73e8d10b-3530-42dd-84ca-aedb4f2f8c5b",
           "detail": "CertiProf, vigente hasta 04/06/2029, verificada.",
+          "tag": "Verified",
+          "filters": ["AI"]
+        },
+        {
+          "title": "Generative AI Professional Certification (GAIPC)",
+          "href": null,
+          "detail": "CertiProf, vigente hasta 06/07/2029, verificada.",
           "tag": "Verified",
           "filters": ["AI"]
         }
@@ -84,6 +98,13 @@
           "detail": "CertiProf, vigente hasta 06/06/2029, verificada.",
           "tag": "Verified",
           "filters": ["Agile"]
+        },
+        {
+          "title": "Scrum Developer Professional Certification (SDPC)",
+          "href": "https://www.credly.com/badges/7415fdae-3a19-4d02-bf4c-0fe99c73aa35",
+          "detail": "CertiProf, vigente hasta 11/07/2029, verificada.",
+          "tag": "Verified",
+          "filters": ["Agile"]
         }
       ]
     },
@@ -94,6 +115,13 @@
           "title": "Cybersecurity Awareness Professional Certification (CAPC)",
           "href": "https://www.credly.com/badges/91c00ee8-84df-461f-9124-2d1c40754b75",
           "detail": "CertiProf, vigente hasta 02/06/2029, verificada.",
+          "tag": "Verified",
+          "filters": ["Security"]
+        },
+        {
+          "title": "Cyber Security Foundation Professional Certificate (CSFPC)",
+          "href": "https://www.credly.com/badges/32f1a688-5d45-4c07-b46e-6f64def2b95d",
+          "detail": "CertiProf, vigente hasta 02/07/2029, verificada.",
           "tag": "Verified",
           "filters": ["Security"]
         }
