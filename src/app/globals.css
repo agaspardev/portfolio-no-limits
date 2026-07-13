@@ -280,6 +280,108 @@
     color: #0078d4;
   }
 
+  /* Theme-aware text and panels — replace JS theme ternaries in sections */
+  .text-body {
+    color: #94a3b8;
+  }
+
+  :root[data-theme="light"] .text-body {
+    color: #334155;
+  }
+
+  .text-dim {
+    color: #64748b;
+  }
+
+  :root[data-theme="light"] .text-dim {
+    color: #475569;
+  }
+
+  .panel-outline {
+    background: rgba(15, 23, 42, 0.60);
+    border-color: rgba(148, 163, 184, 0.16);
+  }
+
+  :root[data-theme="light"] .panel-outline {
+    background: rgba(255, 255, 255, 0.94);
+    border-color: rgba(15, 23, 42, 0.12);
+  }
+
+  .icon-accent {
+    color: #67e8f9;
+  }
+
+  :root[data-theme="light"] .icon-accent {
+    color: #0891b2;
+  }
+
+  .icon-chip {
+    background: rgba(34, 211, 238, 0.08);
+    border: 1px solid rgba(34, 211, 238, 0.15);
+  }
+
+  :root[data-theme="light"] .icon-chip {
+    background: rgba(0, 120, 212, 0.05);
+    border: 1px solid rgba(0, 120, 212, 0.12);
+  }
+
+  :root[data-theme="light"] .surface-card--bright {
+    background: rgba(255, 255, 255, 0.96);
+    border-color: rgba(15, 23, 42, 0.10);
+  }
+
+  /* CTA gradient card (CV download) */
+  .surface-card--cta {
+    background: linear-gradient(135deg, rgba(0, 120, 212, 0.08), rgba(34, 211, 238, 0.05));
+    border-color: rgba(34, 211, 238, 0.20);
+  }
+
+  :root[data-theme="light"] .surface-card--cta {
+    background: linear-gradient(135deg, rgba(0, 120, 212, 0.03), rgba(34, 211, 238, 0.02));
+    border-color: rgba(15, 23, 42, 0.10);
+  }
+
+  :root[data-theme="light"] .surface-card--soft {
+    background: rgba(255, 255, 255, 0.94);
+  }
+
+  /* Experience timeline (OperationalTimelineSection) */
+  .timeline-line {
+    background: rgba(148, 163, 184, 0.12);
+  }
+
+  :root[data-theme="light"] .timeline-line {
+    background: rgba(15, 23, 42, 0.08);
+  }
+
+  .timeline-node {
+    background: rgba(15, 23, 42, 0.80);
+    border-color: rgba(148, 163, 184, 0.18);
+  }
+
+  :root[data-theme="light"] .timeline-node {
+    background: rgba(255, 255, 255, 0.92);
+    border-color: rgba(15, 23, 42, 0.12);
+  }
+
+  .timeline-node--current {
+    background: rgba(34, 211, 238, 0.12);
+    border-color: rgba(34, 211, 238, 0.35);
+  }
+
+  :root[data-theme="light"] .timeline-node--current {
+    background: rgba(0, 120, 212, 0.08);
+    border-color: rgba(0, 120, 212, 0.18);
+  }
+
+  .type-chip {
+    border-color: var(--border-subtle);
+  }
+
+  :root[data-theme="light"] .type-chip {
+    background: rgba(255, 255, 255, 0.92);
+  }
+
   :root[data-theme="light"] .theme-control {
     background: rgba(255, 255, 255, 0.92);
     color: #334155;

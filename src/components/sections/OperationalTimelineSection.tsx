@@ -7,7 +7,6 @@ import { SectionHeader } from "@/components/ui/SectionHeader";
 import { SkillChip } from "@/components/ui/SkillChip";
 import { StatusBadge } from "@/components/ui/StatusBadge";
 import { useLocale } from "@/components/providers/LocaleProvider";
-import { useTheme } from "@/components/providers/ThemeProvider";
 import { copy } from "@/data/copy";
 import type { ExperienceItem } from "@/types/portfolio";
 
@@ -19,7 +18,6 @@ export function OperationalTimelineSection({
   experience,
 }: OperationalTimelineSectionProps) {
   const { locale } = useLocale();
-  const { theme } = useTheme();
   const t = copy[locale].sections.experience;
   const localized = experience.map((item) => ({
     id: item.id,
@@ -45,8 +43,7 @@ export function OperationalTimelineSection({
       <div className="relative">
         {/* Vertical line */}
         <div
-          className="absolute left-5 top-0 bottom-0 w-px hidden md:block"
-          style={{ background: theme === "dark" ? "rgba(148, 163, 184, 0.12)" : "rgba(15, 23, 42, 0.08)" }}
+          className="timeline-line absolute left-5 top-0 bottom-0 w-px hidden md:block"
           aria-hidden="true"
         />
 
@@ -62,39 +59,20 @@ export function OperationalTimelineSection({
             >
               {/* Node dot */}
               <div
-                className="absolute left-0 top-6 hidden md:flex h-10 w-10 items-center justify-center rounded-full border"
-                style={{
-                  background: item.isCurrent
-                    ? theme === "dark"
-                      ? "rgba(34, 211, 238, 0.12)"
-                      : "rgba(0, 120, 212, 0.08)"
-                    : theme === "dark"
-                      ? "rgba(15, 23, 42, 0.80)"
-                      : "rgba(255,255,255,0.92)",
-                  borderColor: item.isCurrent
-                    ? theme === "dark"
-                      ? "rgba(34, 211, 238, 0.35)"
-                      : "rgba(0, 120, 212, 0.18)"
-                    : theme === "dark"
-                      ? "rgba(148, 163, 184, 0.18)"
-                      : "rgba(15, 23, 42, 0.12)",
-                }}
+                className={`${item.isCurrent ? "timeline-node--current" : "timeline-node"} absolute left-0 top-6 hidden md:flex h-10 w-10 items-center justify-center rounded-full border`}
                 aria-hidden="true"
               >
                 <BriefcaseBusiness
                   size={15}
-                  className={item.isCurrent ? "text-cyan-400" : theme === "dark" ? "text-slate-500" : "text-slate-600"}
+                  className={item.isCurrent ? "text-cyan-400" : "text-dim"}
                 />
               </div>
 
               {/* Card */}
               <div
-                className="surface-card p-6 transition-all duration-300 hover:border-cyan-400/25"
+                className="surface-card surface-card--soft p-6 transition-all duration-300 hover:border-cyan-400/25"
                 role="article"
                 aria-label={`${item.role} ${locale === "es" ? "en" : "at"} ${item.company}`}
-                style={{
-                  background: theme === "dark" ? undefined : "rgba(255,255,255,0.94)",
-                }}
               >
                 {/* Top row */}
                 <div className="flex flex-col sm:flex-row sm:items-start sm:justify-between gap-3 mb-4">
@@ -121,12 +99,7 @@ export function OperationalTimelineSection({
                     </div>
                   </div>
                   <span
-                    className="hidden sm:block font-mono text-[10px] px-2.5 py-1 rounded-md border border-slate-700/50 text-slate-500 self-start"
-                    style={{
-                      borderColor: theme === "dark" ? "rgba(148, 163, 184, 0.16)" : "rgba(15, 23, 42, 0.10)",
-                      color: theme === "dark" ? undefined : "#64748b",
-                      background: theme === "dark" ? undefined : "rgba(255,255,255,0.92)",
-                    }}
+                    className="type-chip hidden sm:block font-mono text-[10px] px-2.5 py-1 rounded-md border text-slate-500 self-start"
                   >
                     {item.type}
                   </span>

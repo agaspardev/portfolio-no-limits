@@ -5,7 +5,6 @@ import { Cloud, Code2, Sparkles, ShieldCheck, GitBranch, Workflow } from "lucide
 import { SectionContainer } from "@/components/layout/SectionContainer";
 import { SectionHeader } from "@/components/ui/SectionHeader";
 import { useLocale } from "@/components/providers/LocaleProvider";
-import { useTheme } from "@/components/providers/ThemeProvider";
 import { copy } from "@/data/copy";
 
 const focusIcons = {
@@ -19,7 +18,6 @@ const focusIcons = {
 
 export function CurrentFocusSection() {
   const { locale } = useLocale();
-  const { theme } = useTheme();
   const t = copy[locale].sections.focus;
 
   const items = [
@@ -50,33 +48,29 @@ export function CurrentFocusSection() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, margin: "-60px" }}
               transition={{ duration: 0.35, delay: index * 0.05 }}
-              className="surface-card p-5"
-              style={{
-                background: theme === "dark" ? undefined : "rgba(255,255,255,0.96)",
-                borderColor: theme === "dark" ? undefined : "rgba(15,23,42,0.10)",
-              }}
+              className="surface-card surface-card--bright p-5"
             >
               <div className="flex items-start gap-3">
                 <div
                   className="flex h-10 w-10 flex-shrink-0 items-center justify-center rounded-xl border"
                   style={{
                     background: item.accent,
-                    borderColor: theme === "dark" ? "rgba(148,163,184,0.16)" : "rgba(15,23,42,0.10)",
+                    borderColor: "var(--border-subtle)",
                   }}
                   aria-hidden="true"
                 >
-                  <Icon size={16} className={theme === "dark" ? "text-cyan-300" : "text-cyan-600"} />
+                  <Icon size={16} className="icon-accent" />
                 </div>
                 <div>
                   <h3
                     className="text-sm font-semibold"
-                    style={{ color: theme === "dark" ? "rgb(248,250,252)" : "rgb(15,23,42)" }}
+                    style={{ color: "var(--text-primary)" }}
                   >
                     {data.title}
                   </h3>
                   <p
                     className="mt-1 text-sm leading-relaxed"
-                    style={{ color: theme === "dark" ? "rgb(148,163,184)" : "rgb(71,85,105)" }}
+                    style={{ color: "var(--text-muted)" }}
                   >
                     {data.description}
                   </p>

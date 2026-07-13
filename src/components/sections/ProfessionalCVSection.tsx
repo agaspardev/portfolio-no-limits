@@ -6,7 +6,6 @@ import { SectionContainer } from "@/components/layout/SectionContainer";
 import { SectionHeader } from "@/components/ui/SectionHeader";
 import { IconResolver } from "@/components/ui/IconResolver";
 import { useLocale } from "@/components/providers/LocaleProvider";
-import { useTheme } from "@/components/providers/ThemeProvider";
 import { copy } from "@/data/copy";
 import type { CVData } from "@/types/portfolio";
 
@@ -16,7 +15,6 @@ interface ProfessionalCVSectionProps {
 
 export function ProfessionalCVSection({ cv }: ProfessionalCVSectionProps) {
   const { locale } = useLocale();
-  const { theme } = useTheme();
   const t = copy[locale].sections.cv;
   const summaryAreaCopy = {
     es: {
@@ -54,14 +52,7 @@ export function ProfessionalCVSection({ cv }: ProfessionalCVSectionProps) {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.5 }}
-              className="surface-card p-8 mb-10 text-center"
-              style={{
-                background:
-                  theme === "dark"
-                    ? "linear-gradient(135deg, rgba(0, 120, 212, 0.08), rgba(34, 211, 238, 0.05))"
-                    : "linear-gradient(135deg, rgba(0, 120, 212, 0.03), rgba(34, 211, 238, 0.02))",
-                borderColor: theme === "dark" ? "rgba(34, 211, 238, 0.20)" : "rgba(15, 23, 42, 0.10)",
-              }}
+          className="surface-card surface-card--cta p-8 mb-10 text-center"
         >
           {/* Snapshot pills */}
           <div
@@ -114,18 +105,14 @@ export function ProfessionalCVSection({ cv }: ProfessionalCVSectionProps) {
             >
               <div className="flex items-center gap-2.5">
                 <div
-                  className="flex h-8 w-8 flex-shrink-0 items-center justify-center rounded-lg"
-                  style={{
-                    background: theme === "dark" ? "rgba(34, 211, 238, 0.08)" : "rgba(0, 120, 212, 0.05)",
-                    border: theme === "dark" ? "1px solid rgba(34, 211, 238, 0.15)" : "1px solid rgba(0, 120, 212, 0.12)",
-                  }}
+                  className="icon-chip flex h-8 w-8 flex-shrink-0 items-center justify-center rounded-lg"
                   aria-hidden="true"
                 >
                   <IconResolver name={area.icon} size={14} className="text-cyan-400" />
                 </div>
-                <h3 className="text-sm font-semibold" style={{ color: theme === "dark" ? "rgb(248,250,252)" : "rgb(15,23,42)" }}>{translated.label}</h3>
+                <h3 className="text-sm font-semibold" style={{ color: "var(--text-primary)" }}>{translated.label}</h3>
               </div>
-              <p className="text-xs leading-relaxed" style={{ color: theme === "dark" ? "rgb(100,116,139)" : "rgb(71,85,105)" }}>{translated.description}</p>
+              <p className="text-dim text-xs leading-relaxed">{translated.description}</p>
             </motion.div>
               );
             })}
