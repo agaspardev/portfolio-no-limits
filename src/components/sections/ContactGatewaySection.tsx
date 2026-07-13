@@ -34,7 +34,7 @@ export function ContactGatewaySection({ socialLinks }: ContactGatewaySectionProp
         badgeclaimed: "Professional badges",
       };
   const primaryLinks = socialLinks.filter((l) => l.isPrimary);
-  const [form, setForm] = useState({ name: "", email: "", message: "" });
+  const [form, setForm] = useState({ name: "", email: "", message: "", company: "" });
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [submitStatus, setSubmitStatus] = useState<"idle" | "success" | "error">("idle");
   const [errorMessage, setErrorMessage] = useState("");
@@ -84,6 +84,7 @@ export function ContactGatewaySection({ socialLinks }: ContactGatewaySectionProp
           name: trimmedName,
           email: trimmedEmail,
           message: trimmedMessage,
+          company: form.company,
         }),
       });
 
@@ -91,12 +92,12 @@ export function ContactGatewaySection({ socialLinks }: ContactGatewaySectionProp
 
       if (response.ok && data.success) {
         setSubmitStatus("success");
-        setForm({ name: "", email: "", message: "" });
+        setForm({ name: "", email: "", message: "", company: "" });
       } else {
         setSubmitStatus("error");
         setErrorMessage(data.error || t.feedback.genericError);
       }
-    } catch (error) {
+    } catch {
       setSubmitStatus("error");
       setErrorMessage(t.feedback.networkError);
     } finally {
@@ -114,7 +115,7 @@ export function ContactGatewaySection({ socialLinks }: ContactGatewaySectionProp
       />
 
       <div className="max-w-4xl mx-auto grid grid-cols-1 lg:grid-cols-[1fr_280px] gap-10">
-        {/* Contact form (visual only for now) */}
+        {/* Contact form */}
         <motion.div
           initial={{ opacity: 0, y: 16 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -131,6 +132,20 @@ export function ContactGatewaySection({ socialLinks }: ContactGatewaySectionProp
             }}
           >
             <p className="mono-label text-[10px] mb-4">{t.form}</p>
+
+            {/* Honeypot: hidden from humans and screen readers; bots that fill
+                it get a fake success from the API and no email is sent */}
+            <div aria-hidden="true" className="absolute -left-[9999px] top-auto h-px w-px overflow-hidden">
+              <label htmlFor="contact-company">Company</label>
+              <input
+                id="contact-company"
+                type="text"
+                value={form.company}
+                onChange={(e) => setForm({ ...form, company: e.target.value })}
+                tabIndex={-1}
+                autoComplete="off"
+              />
+            </div>
 
             <div className="space-y-1.5">
               <label htmlFor="contact-name" className="text-xs text-slate-400 font-medium">

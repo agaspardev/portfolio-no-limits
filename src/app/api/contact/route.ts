@@ -2,12 +2,11 @@ import { Resend } from "resend";
 import { z } from "zod";
 import { NextResponse } from "next/server";
 
-const resend = new Resend(process.env.RESEND_API_KEY);
 
 const contactFormSchema = z.object({
-  name: z.string().trim().min(2, "Name must be at least 2 characters"),
-  email: z.string().trim().email("Please provide a valid email address"),
-  message: z.string().trim().min(10, "Message must be at least 10 characters"),
+  name: z.string().trim().min(2, "Name must be at least 2 characters").max(100, "Name is too long"),
+  email: z.string().trim().email("Please provide a valid email address").max(254, "Email is too long"),
+  message: z.string().trim().min(10, "Message must be at least 10 characters").max(5000, "Message is too long"),
 });
 
 function escapeHtml(unsafe: string): string {
@@ -22,6 +21,16 @@ function escapeHtml(unsafe: string): string {
 export async function POST(request: Request) {
   try {
     const body = await request.json();
+
+    // Honeypot: the "company" field is invisible in the UI, so only bots fill
+    // it. Pretend success so they don't learn the field is a trap.
+    if (typeof body?.company === "string" && body.company.length > 0) {
+      return NextResponse.json(
+        { success: true, message: "Email sent successfully" },
+        { status: 200 }
+      );
+    }
+
     const validatedData = contactFormSchema.parse(body);
 
     const { name, email, message } = validatedData;
@@ -30,11 +39,20 @@ export async function POST(request: Request) {
     const safeEmail = escapeHtml(email);
     const safeMessage = escapeHtml(message);
 
+    if (!process.env.RESEND_API_KEY) {
+      console.error("RESEND_API_KEY is not configured");
+      return NextResponse.json(
+        { error: "Failed to send email" },
+        { status: 500 }
+      );
+    }
+    const resend = new Resend(process.env.RESEND_API_KEY);
+
     const toEmails = (process.env.TO_EMAIL || "contacto@antoniogaspar.dev")
       .split(",")
       .map((e) => e.trim());
 
-    const { data, error } = await resend.emails.send({
+    const { error } = await resend.emails.send({
       from: process.env.FROM_EMAIL || "onboarding@resend.dev",
       to: toEmails,
       replyTo: email,
@@ -54,8 +72,9 @@ export async function POST(request: Request) {
     });
 
     if (error) {
+      console.error("Resend error:", error);
       return NextResponse.json(
-        { error: "Failed to send email", details: error.message },
+        { error: "Failed to send email" },
         { status: 500 }
       );
     }
