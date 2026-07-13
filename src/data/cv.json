@@ -29,25 +29,95 @@
       "group": "Cloud y Azure",
       "items": [
         {
-          "title": "Microsoft Certified: Azure Fundamentals (AZ-900)",
-          "href": "https://www.credly.com/badges/de2ce38d-8ad4-4d81-8604-894267bf3edf",
-          "detail": "Microsoft, emitida 04/06/2026, verificada.",
+          "title": "DevOps Foundation Professional Certification (DFPC)",
+          "href": "https://www.credly.com/badges/5ed19551-3bea-474d-a631-b4cfaf5919e5",
+          "detail": "CertiProf, vigente hasta 11/07/2029, verificada.",
           "tag": "Verified",
-          "filters": ["Cloud", "Microsoft"]
-        },
+          "filters": ["Cloud", "DevOps"]
+        }
+      ]
+    },
+    {
+      "group": "Agile y Scrum",
+      "items": [
+        {
+          "title": "Scrum Developer Professional Certification (SDPC)",
+          "href": "https://www.credly.com/badges/7415fdae-3a19-4d02-bf4c-0fe99c73aa35",
+          "detail": "CertiProf, vigente hasta 11/07/2029, verificada.",
+          "tag": "Verified",
+          "filters": ["Agile"]
+        }
+      ]
+    },
+    {
+      "group": "Inteligencia artificial",
+      "items": [
+        {
+          "title": "Generative AI Professional Certification (GAIPC)",
+          "href": null,
+          "detail": "CertiProf, vigente hasta 06/07/2029, verificada.",
+          "tag": "Verified",
+          "filters": ["AI"]
+        }
+      ]
+    },
+    {
+      "group": "Seguridad",
+      "items": [
+        {
+          "title": "Cyber Security Foundation Professional Certificate (CSFPC)",
+          "href": "https://www.credly.com/badges/32f1a688-5d45-4c07-b46e-6f64def2b95d",
+          "detail": "CertiProf, vigente hasta 02/07/2029, verificada.",
+          "tag": "Verified",
+          "filters": ["Security"]
+        }
+      ]
+    },
+    {
+      "group": "Cloud y Azure",
+      "items": [
         {
           "title": "DevOps Essentials Professional Certification (DEPC)",
           "href": "https://www.credly.com/badges/9673f472-e761-4fdd-8a03-8a491aef41fc",
           "detail": "CertiProf, vigente hasta 06/06/2029, verificada.",
           "tag": "Verified",
           "filters": ["Cloud", "DevOps"]
-        },
+        }
+      ]
+    },
+    {
+      "group": "Inteligencia artificial",
+      "items": [
         {
-          "title": "DevOps Foundation Professional Certification (DFPC)",
-          "href": "https://www.credly.com/badges/5ed19551-3bea-474d-a631-b4cfaf5919e5",
-          "detail": "CertiProf, vigente hasta 11/07/2029, verificada.",
+          "title": "Microsoft Certified: Azure AI Fundamentals",
+          "href": "https://www.credly.com/badges/8ac4ea70-a9bf-4607-9bbc-e095a9da67e1",
+          "detail": "Microsoft, emitida 06/06/2026, verificada.",
           "tag": "Verified",
-          "filters": ["Cloud", "DevOps"]
+          "filters": ["Cloud", "AI", "Microsoft"]
+        }
+      ]
+    },
+    {
+      "group": "Agile y Scrum",
+      "items": [
+        {
+          "title": "Scrum Foundation Professional Certification (SFPC)",
+          "href": "https://www.credly.com/badges/c6cda138-2f64-4045-ae1c-7d47d256b1f3",
+          "detail": "CertiProf, vigente hasta 06/06/2029, verificada.",
+          "tag": "Verified",
+          "filters": ["Agile"]
+        }
+      ]
+    },
+    {
+      "group": "Trabajo remoto",
+      "items": [
+        {
+          "title": "Remote Work Professional Certification (RWPC)",
+          "href": "https://my-certificates.com/certificates/6a2823ae9293636dfe687c5b",
+          "detail": "CertiProf, emitida 06/06/2026, vigente hasta 06/06/2027, verificada.",
+          "tag": "Verified",
+          "filters": ["Work"]
         }
       ]
     },
@@ -67,44 +137,23 @@
       "group": "Inteligencia artificial",
       "items": [
         {
-          "title": "Microsoft Certified: Azure AI Fundamentals",
-          "href": "https://www.credly.com/badges/8ac4ea70-a9bf-4607-9bbc-e095a9da67e1",
-          "detail": "Microsoft, emitida 06/06/2026, verificada.",
-          "tag": "Verified",
-          "filters": ["Cloud", "AI", "Microsoft"]
-        },
-        {
           "title": "Artificial Intelligence Professional Certification (CAIPC)",
           "href": "https://www.credly.com/badges/73e8d10b-3530-42dd-84ca-aedb4f2f8c5b",
           "detail": "CertiProf, vigente hasta 04/06/2029, verificada.",
-          "tag": "Verified",
-          "filters": ["AI"]
-        },
-        {
-          "title": "Generative AI Professional Certification (GAIPC)",
-          "href": null,
-          "detail": "CertiProf, vigente hasta 06/07/2029, verificada.",
           "tag": "Verified",
           "filters": ["AI"]
         }
       ]
     },
     {
-      "group": "Agile y Scrum",
+      "group": "Cloud y Azure",
       "items": [
         {
-          "title": "Scrum Foundation Professional Certification (SFPC)",
-          "href": "https://www.credly.com/badges/c6cda138-2f64-4045-ae1c-7d47d256b1f3",
-          "detail": "CertiProf, vigente hasta 06/06/2029, verificada.",
+          "title": "Microsoft Certified: Azure Fundamentals (AZ-900)",
+          "href": "https://www.credly.com/badges/de2ce38d-8ad4-4d81-8604-894267bf3edf",
+          "detail": "Microsoft, emitida 04/06/2026, verificada.",
           "tag": "Verified",
-          "filters": ["Agile"]
-        },
-        {
-          "title": "Scrum Developer Professional Certification (SDPC)",
-          "href": "https://www.credly.com/badges/7415fdae-3a19-4d02-bf4c-0fe99c73aa35",
-          "detail": "CertiProf, vigente hasta 11/07/2029, verificada.",
-          "tag": "Verified",
-          "filters": ["Agile"]
+          "filters": ["Cloud", "Microsoft"]
         }
       ]
     },
@@ -115,13 +164,6 @@
           "title": "Cybersecurity Awareness Professional Certification (CAPC)",
           "href": "https://www.credly.com/badges/91c00ee8-84df-461f-9124-2d1c40754b75",
           "detail": "CertiProf, vigente hasta 02/06/2029, verificada.",
-          "tag": "Verified",
-          "filters": ["Security"]
-        },
-        {
-          "title": "Cyber Security Foundation Professional Certificate (CSFPC)",
-          "href": "https://www.credly.com/badges/32f1a688-5d45-4c07-b46e-6f64def2b95d",
-          "detail": "CertiProf, vigente hasta 02/07/2029, verificada.",
           "tag": "Verified",
           "filters": ["Security"]
         }
@@ -136,18 +178,6 @@
           "detail": "CertiProf, emitida 02/06/2026, verificada.",
           "tag": "Verified",
           "filters": ["PM"]
-        }
-      ]
-    },
-    {
-      "group": "Trabajo remoto",
-      "items": [
-        {
-          "title": "Remote Work Professional Certification (RWPC)",
-          "href": "https://my-certificates.com/certificates/6a2823ae9293636dfe687c5b",
-          "detail": "CertiProf, emitida 06/06/2026, vigente hasta 06/06/2027, verificada.",
-          "tag": "Verified",
-          "filters": ["Work"]
         }
       ]
     }

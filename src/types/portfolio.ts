@@ -169,7 +169,7 @@ export interface CVData {
     group: string;
     items: {
       title: string;
-      href: string;
+      href: string | null;
       detail: string | null;
       tag?: string;
       filters?: string[];
