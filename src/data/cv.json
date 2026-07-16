@@ -6,19 +6,22 @@
   "fileUrl": "/documents/Antonio-Gaspar-CV-ES.pdf",
   "files": [
     {
-      "label": "CV Profesional",
+      "labelEs": "CV Profesional",
+      "labelEn": "Professional CV",
       "href": "/documents/Antonio-Gaspar-CV-ES.pdf",
       "language": "ES",
       "isPrimary": true
     },
     {
-      "label": "Professional Resume",
+      "labelEs": "Currículum en inglés",
+      "labelEn": "Professional Resume",
       "href": "/documents/Antonio-Gaspar-Resume-EN.pdf",
       "language": "EN",
       "isPrimary": false
     },
     {
-      "label": "Bilingual Resume",
+      "labelEs": "CV Bilingüe",
+      "labelEn": "Bilingual Resume",
       "href": "/documents/Antonio-Gaspar-CV-Bilingual.pdf",
       "language": "ES/EN",
       "isPrimary": false
@@ -31,7 +34,8 @@
         {
           "title": "DevOps Foundation Professional Certification (DFPC)",
           "href": "https://www.credly.com/badges/5ed19551-3bea-474d-a631-b4cfaf5919e5",
-          "detail": "CertiProf, vigente hasta 11/07/2029, verificada.",
+          "detailEs": "CertiProf, vigente hasta 11/07/2029, verificada.",
+          "detailEn": "CertiProf, valid until 07/11/2029, verified.",
           "tag": "Verified",
           "filters": ["Cloud", "DevOps"]
         }
@@ -43,7 +47,8 @@
         {
           "title": "Scrum Developer Professional Certification (SDPC)",
           "href": "https://www.credly.com/badges/7415fdae-3a19-4d02-bf4c-0fe99c73aa35",
-          "detail": "CertiProf, vigente hasta 11/07/2029, verificada.",
+          "detailEs": "CertiProf, vigente hasta 11/07/2029, verificada.",
+          "detailEn": "CertiProf, valid until 07/11/2029, verified.",
           "tag": "Verified",
           "filters": ["Agile"]
         }
@@ -55,7 +60,8 @@
         {
           "title": "Generative AI Professional Certification (GAIPC)",
           "href": "https://www.credly.com/badges/196b55d4-4638-4ec4-b7da-29d33bb64622",
-          "detail": "CertiProf, vigente hasta 06/07/2029, verificada.",
+          "detailEs": "CertiProf, vigente hasta 06/07/2029, verificada.",
+          "detailEn": "CertiProf, valid until 07/06/2029, verified.",
           "tag": "Verified",
           "filters": ["AI"]
         }
@@ -67,7 +73,8 @@
         {
           "title": "Cyber Security Foundation Professional Certificate (CSFPC)",
           "href": "https://www.credly.com/badges/32f1a688-5d45-4c07-b46e-6f64def2b95d",
-          "detail": "CertiProf, vigente hasta 02/07/2029, verificada.",
+          "detailEs": "CertiProf, vigente hasta 02/07/2029, verificada.",
+          "detailEn": "CertiProf, valid until 07/02/2029, verified.",
           "tag": "Verified",
           "filters": ["Security"]
         }
@@ -79,7 +86,8 @@
         {
           "title": "DevOps Essentials Professional Certification (DEPC)",
           "href": "https://www.credly.com/badges/9673f472-e761-4fdd-8a03-8a491aef41fc",
-          "detail": "CertiProf, vigente hasta 06/06/2029, verificada.",
+          "detailEs": "CertiProf, vigente hasta 06/06/2029, verificada.",
+          "detailEn": "CertiProf, valid until 06/06/2029, verified.",
           "tag": "Verified",
           "filters": ["Cloud", "DevOps"]
         }
@@ -91,7 +99,8 @@
         {
           "title": "Microsoft Certified: Azure AI Fundamentals",
           "href": "https://www.credly.com/badges/8ac4ea70-a9bf-4607-9bbc-e095a9da67e1",
-          "detail": "Microsoft, emitida 06/06/2026, verificada.",
+          "detailEs": "Microsoft, emitida 06/06/2026, verificada.",
+          "detailEn": "Microsoft, issued 06/06/2026, verified.",
           "tag": "Verified",
           "filters": ["Cloud", "AI", "Microsoft"]
         }
@@ -103,7 +112,8 @@
         {
           "title": "Scrum Foundation Professional Certification (SFPC)",
           "href": "https://www.credly.com/badges/c6cda138-2f64-4045-ae1c-7d47d256b1f3",
-          "detail": "CertiProf, vigente hasta 06/06/2029, verificada.",
+          "detailEs": "CertiProf, vigente hasta 06/06/2029, verificada.",
+          "detailEn": "CertiProf, valid until 06/06/2029, verified.",
           "tag": "Verified",
           "filters": ["Agile"]
         }
@@ -115,7 +125,8 @@
         {
           "title": "Remote Work Professional Certification (RWPC)",
           "href": "https://my-certificates.com/certificates/6a2823ae9293636dfe687c5b",
-          "detail": "CertiProf, emitida 06/06/2026, vigente hasta 06/06/2027, verificada.",
+          "detailEs": "CertiProf, emitida 06/06/2026, vigente hasta 06/06/2027, verificada.",
+          "detailEn": "CertiProf, issued 06/06/2026, valid until 06/06/2027, verified.",
           "tag": "Verified",
           "filters": ["Work"]
         }
@@ -127,7 +138,8 @@
         {
           "title": "Microsoft Certified: Azure Data Fundamentals (DP-900)",
           "href": "https://www.credly.com/badges/8718ec6b-d682-455d-8aec-15fad85bdd86",
-          "detail": "Microsoft, emitida 05/06/2026, verificada.",
+          "detailEs": "Microsoft, emitida 05/06/2026, verificada.",
+          "detailEn": "Microsoft, issued 06/05/2026, verified.",
           "tag": "Verified",
           "filters": ["Cloud", "Microsoft", "Data"]
         }
@@ -139,7 +151,8 @@
         {
           "title": "Artificial Intelligence Professional Certification (CAIPC)",
           "href": "https://www.credly.com/badges/73e8d10b-3530-42dd-84ca-aedb4f2f8c5b",
-          "detail": "CertiProf, vigente hasta 04/06/2029, verificada.",
+          "detailEs": "CertiProf, vigente hasta 04/06/2029, verificada.",
+          "detailEn": "CertiProf, valid until 06/04/2029, verified.",
           "tag": "Verified",
           "filters": ["AI"]
         }
@@ -151,7 +164,8 @@
         {
           "title": "Microsoft Certified: Azure Fundamentals (AZ-900)",
           "href": "https://www.credly.com/badges/de2ce38d-8ad4-4d81-8604-894267bf3edf",
-          "detail": "Microsoft, emitida 04/06/2026, verificada.",
+          "detailEs": "Microsoft, emitida 04/06/2026, verificada.",
+          "detailEn": "Microsoft, issued 06/04/2026, verified.",
           "tag": "Verified",
           "filters": ["Cloud", "Microsoft"]
         }
@@ -163,7 +177,8 @@
         {
           "title": "Cybersecurity Awareness Professional Certification (CAPC)",
           "href": "https://www.credly.com/badges/91c00ee8-84df-461f-9124-2d1c40754b75",
-          "detail": "CertiProf, vigente hasta 02/06/2029, verificada.",
+          "detailEs": "CertiProf, vigente hasta 02/06/2029, verificada.",
+          "detailEn": "CertiProf, valid until 06/02/2029, verified.",
           "tag": "Verified",
           "filters": ["Security"]
         }
@@ -175,7 +190,8 @@
         {
           "title": "Project Management Essentials Professional Certification (PMEPC)",
           "href": "https://my-certificates.com/certificates/6a1f49cc9208eadf9983b48a",
-          "detail": "CertiProf, emitida 02/06/2026, verificada.",
+          "detailEs": "CertiProf, emitida 02/06/2026, verificada.",
+          "detailEn": "CertiProf, issued 06/02/2026, verified.",
           "tag": "Verified",
           "filters": ["PM"]
         }
@@ -187,27 +203,35 @@
       "group": "LinkedIn Learning",
       "items": [
         {
-          "title": "Fundamentos profesionales de gestión de proyectos",
+          "titleEs": "Fundamentos profesionales de gestión de proyectos",
+          "titleEn": "Professional project management fundamentals",
           "href": "https://www.linkedin.com/learning/certificates/d43376cba8e25fe8a52cb7930babb46cbbc9e6f91f17e3e53584b598852539ad",
-          "detail": null,
+          "detailEs": null,
+          "detailEn": null,
           "filters": ["PM"]
         },
         {
-          "title": "Introducción a AWS: Conceptos de la nube",
+          "titleEs": "Introducción a AWS: Conceptos de la nube",
+          "titleEn": "Introduction to AWS: Cloud concepts",
           "href": "https://www.linkedin.com/learning/certificates/6dfeb3b826b25e8b352707e55d91c989c44d1d1a72be6ebba289dba7e49b047b",
-          "detail": "AWS.",
+          "detailEs": "AWS.",
+          "detailEn": "AWS.",
           "filters": ["Cloud", "AWS"]
         },
         {
-          "title": "Introducción a AWS: Seguridad",
+          "titleEs": "Introducción a AWS: Seguridad",
+          "titleEn": "Introduction to AWS: Security",
           "href": "https://www.linkedin.com/learning/certificates/cda0ffd3a4458695beaa0c5168d7e2e1edceb50a020d9533c346f180a0129f24",
-          "detail": "AWS.",
+          "detailEs": "AWS.",
+          "detailEn": "AWS.",
           "filters": ["Cloud", "AWS", "Security"]
         },
         {
-          "title": "Introducción a AWS: Tarifas y servicios de soporte",
+          "titleEs": "Introducción a AWS: Tarifas y servicios de soporte",
+          "titleEn": "Introduction to AWS: Pricing and support services",
           "href": "https://www.linkedin.com/learning/certificates/21c0f1ee6c38bc656f81a80814d25885d06eea60bb76d70901e3e2ccd7084a4c",
-          "detail": "AWS.",
+          "detailEs": "AWS.",
+          "detailEn": "AWS.",
           "filters": ["Cloud", "AWS"]
         }
       ]
@@ -216,9 +240,11 @@
       "group": "Escalab Academy",
       "items": [
         {
-          "title": "Bootcamp Full Stack Ninja",
+          "titleEs": "Bootcamp Full Stack Ninja",
+          "titleEn": "Full Stack Ninja Bootcamp",
           "href": null,
-          "detail": "HTML5, CSS3, JavaScript, Git/GitHub, JavaScript Master, React JS y React Native.",
+          "detailEs": "HTML5, CSS3, JavaScript, Git/GitHub, JavaScript Master, React JS y React Native.",
+          "detailEn": "HTML5, CSS3, JavaScript, Git/GitHub, JavaScript Master, React JS, and React Native.",
           "filters": ["Training", "Development"]
         }
       ]
@@ -227,17 +253,33 @@
   "education": [
     {
       "group": "Instituto Profesional DUOC UC",
-      "items": ["Analista Programador Computacional | En curso | Chile"]
+      "items": [
+        {
+          "es": "Analista Programador Computacional | En curso | Chile",
+          "en": "Computer Programming Analyst | In progress | Chile"
+        }
+      ]
     },
     {
       "group": "Universidad Bicentenaria de Aragua",
-      "items": ["Ingeniería de Sistemas | Formación en análisis de sistemas y programación | Venezuela"]
+      "items": [
+        {
+          "es": "Ingeniería de Sistemas | Formación en análisis de sistemas y programación | Venezuela",
+          "en": "Systems Engineering | Training in systems analysis and programming | Venezuela"
+        }
+      ]
     },
     {
       "group": "Escuela de Sistemas e Informática",
       "items": [
-        "Analista Programador | C, PHP/MySQL, Visual Basic .NET, C# .NET, SQL, HTML, Linux, redes e IT.",
-        "Cisco IT Essentials | Cisco Networking Academy."
+        {
+          "es": "Analista Programador | C, PHP/MySQL, Visual Basic .NET, C# .NET, SQL, HTML, Linux, redes e IT.",
+          "en": "Programming Analyst | C, PHP/MySQL, Visual Basic .NET, C# .NET, SQL, HTML, Linux, networking, and IT."
+        },
+        {
+          "es": "Cisco IT Essentials | Cisco Networking Academy.",
+          "en": "Cisco IT Essentials | Cisco Networking Academy."
+        }
       ]
     }
   ],
@@ -253,39 +295,53 @@
   ],
   "summaryAreas": [
     {
-      "label": "Sistemas",
+      "labelEs": "Sistemas",
+      "labelEn": "Systems",
       "icon": "Server",
-      "description": "Base profesional en análisis, operación y administración tecnológica."
+      "descriptionEs": "Base profesional en análisis, operación y administración tecnológica.",
+      "descriptionEn": "Professional foundation in analysis, operations, and technology administration."
     },
     {
-      "label": "Desarrollo Full-Stack",
+      "labelEs": "Desarrollo Full-Stack",
+      "labelEn": "Full-Stack Development",
       "icon": "Code2",
-      "description": "Experiencia en Angular, React, Node.js, .NET/C#, APIs, integración de sistemas y soluciones web."
+      "descriptionEs": "Experiencia en Angular, React, Node.js, .NET/C#, APIs, integración de sistemas y soluciones web.",
+      "descriptionEn": "Experience in Angular, React, Node.js, .NET/C#, APIs, systems integration, and web solutions."
     },
     {
-      "label": "Cloud",
+      "labelEs": "Cloud",
+      "labelEn": "Cloud",
       "icon": "Cloud",
-      "description": "Formación y experiencia aplicada en Azure, AWS y servicios cloud modernos."
+      "descriptionEs": "Formación y experiencia aplicada en Azure, AWS y servicios cloud modernos.",
+      "descriptionEn": "Training and experience applied to Azure, AWS, and modern cloud services."
     },
     {
-      "label": "DevOps",
+      "labelEs": "DevOps",
+      "labelEn": "DevOps",
       "icon": "GitBranch",
-      "description": "Interés y práctica en automatización, CI/CD, GitHub Workflows, Scrum y mejora continua."
+      "descriptionEs": "Interés y práctica en automatización, CI/CD, GitHub Workflows, Scrum y mejora continua.",
+      "descriptionEn": "Interest and practice in automation, CI/CD, GitHub Workflows, Scrum, and continuous improvement."
     },
     {
-      "label": "Formación",
+      "labelEs": "Formación",
+      "labelEn": "Training",
       "icon": "MonitorCog",
-      "description": "Cursos, bootcamps y estudios técnicos complementan la práctica profesional."
+      "descriptionEs": "Cursos, bootcamps y estudios técnicos complementan la práctica profesional.",
+      "descriptionEn": "Courses, bootcamps, and technical studies complement professional practice."
     },
     {
-      "label": "Seguridad",
+      "labelEs": "Seguridad",
+      "labelEn": "Security",
       "icon": "ShieldCheck",
-      "description": "Experiencia e interés en análisis de vulnerabilidades, IAM, cloud security y buenas prácticas de ciberseguridad."
+      "descriptionEs": "Experiencia e interés en análisis de vulnerabilidades, IAM, cloud security y buenas prácticas de ciberseguridad.",
+      "descriptionEn": "Experience and interest in vulnerability analysis, IAM, cloud security, and cybersecurity best practices."
     },
     {
-      "label": "Automatización",
+      "labelEs": "Automatización",
+      "labelEn": "Automation",
       "icon": "Zap",
-      "description": "Enfoque en reducción de tareas repetitivas, eficiencia operativa y optimización de procesos."
+      "descriptionEs": "Enfoque en reducción de tareas repetitivas, eficiencia operativa y optimización de procesos.",
+      "descriptionEn": "Focus on reducing repetitive tasks, operational efficiency, and process optimization."
     }
   ]
 }

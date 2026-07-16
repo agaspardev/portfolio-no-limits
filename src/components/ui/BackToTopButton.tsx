@@ -5,13 +5,11 @@ import { ArrowUp } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
 import { useLocale } from "@/components/providers/LocaleProvider";
 import { useTheme } from "@/components/providers/ThemeProvider";
-import { copy } from "@/data/copy";
 
 export function BackToTopButton() {
   const { locale } = useLocale();
   const { theme } = useTheme();
   const [visible, setVisible] = useState(false);
-  const t = copy[locale].ui;
 
   useEffect(() => {
     const onScroll = () => setVisible(window.scrollY > 400);
@@ -30,7 +28,7 @@ export function BackToTopButton() {
           exit={{ opacity: 0, y: 12, scale: 0.96 }}
           transition={{ duration: 0.2 }}
           onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
-          className="fixed bottom-6 right-6 z-50 flex h-11 w-11 items-center justify-center rounded-full border shadow-lg backdrop-blur-md transition-colors"
+          className="fixed z-50 flex h-11 w-11 items-center justify-center rounded-full border shadow-lg backdrop-blur-md transition-all duration-300 bottom-6 right-6"
           style={{
             background: theme === "dark" ? "rgba(2, 6, 23, 0.90)" : "rgba(255, 255, 255, 0.94)",
             borderColor: theme === "dark" ? "rgba(51, 65, 85, 0.85)" : "rgba(15, 23, 42, 0.12)",

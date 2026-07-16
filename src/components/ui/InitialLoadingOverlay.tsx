@@ -1,26 +1,16 @@
 "use client";
 
-import { useEffect, useMemo, useState } from "react";
+import { useEffect, useState } from "react";
 import { AnimatePresence, motion } from "framer-motion";
-import { useLocale } from "@/components/providers/LocaleProvider";
 import { useTheme } from "@/components/providers/ThemeProvider";
 
 type Phase = "hidden" | "error" | "glitch" | "fade";
 
 export function InitialLoadingOverlay() {
-  const { locale } = useLocale();
   const { theme } = useTheme();
   const [phase, setPhase] = useState<Phase>("hidden");
   const [errorWords, setErrorWords] = useState<string[]>([]);
   const [glitchText, setGlitchText] = useState("SYSTEM DISCONNECTING...");
-
-  const stateLines = useMemo(
-    () =>
-      locale === "es"
-        ? ["Inicializando portafolio", "Cargando control center", "Preparando experiencia"]
-        : ["Initializing portfolio", "Loading control center", "Preparing experience"],
-    [locale],
-  );
 
   useEffect(() => {
     const navType = (window.performance.getEntriesByType("navigation")[0] as PerformanceNavigationTiming | undefined)?.type;
@@ -28,12 +18,12 @@ export function InitialLoadingOverlay() {
     if (!shouldShow) return;
 
     window.sessionStorage.setItem("no-limits-intro-seen", "1");
-    setPhase("error");
 
     const phrase = "ERROR 404: Conventional developer not found.";
     const words = phrase.split(" ");
     let wordIndex = 0;
 
+    const startTimer = window.setTimeout(() => setPhase("error"), 0);
     const errorTimer = window.setInterval(() => {
       wordIndex += 1;
       setErrorWords(words.slice(0, wordIndex));
@@ -44,7 +34,10 @@ export function InitialLoadingOverlay() {
       }
     }, 560);
 
-    return () => window.clearInterval(errorTimer);
+    return () => {
+      window.clearTimeout(startTimer);
+      window.clearInterval(errorTimer);
+    };
   }, []);
 
   useEffect(() => {
@@ -57,7 +50,6 @@ export function InitialLoadingOverlay() {
       "RECOVERING...",
     ];
     let index = 0;
-    setGlitchText(glitchMessages[0]);
 
     const timer = window.setInterval(() => {
       index += 1;

@@ -3,8 +3,10 @@
 import { motion } from "framer-motion";
 import { SectionContainer } from "@/components/layout/SectionContainer";
 import { SectionHeader } from "@/components/ui/SectionHeader";
+import { ProfileNodeCard } from "@/components/ui/ProfileNodeCard";
 import { useLocale } from "@/components/providers/LocaleProvider";
 import { copy } from "@/data/copy";
+import { staggerContainer, fadeUp, viewportOnce } from "@/lib/animations";
 import type { Profile } from "@/types/portfolio";
 
 interface SystemProfileSectionProps {
@@ -14,62 +16,78 @@ interface SystemProfileSectionProps {
 export function SystemProfileSection({ profile }: SystemProfileSectionProps) {
   const { locale } = useLocale();
   const t = copy[locale].sections.profile;
+
   return (
-    <SectionContainer id="profile" className="border-t border-slate-800/40">
-      <SectionHeader
-        eyebrow={t.eyebrow}
-        title={t.title}
-        description={t.description}
-      />
+    <SectionContainer id="profile">
+      <div className="grid grid-cols-1 gap-x-10 gap-y-4 lg:grid-cols-[1fr_380px] lg:gap-x-14 lg:gap-y-4">
+        <SectionHeader
+          eyebrow={t.eyebrow}
+          title={t.title}
+          className="mb-0 md:mb-0 lg:col-span-2"
+        />
 
-      <div className="grid grid-cols-1 lg:grid-cols-[1fr_360px] gap-10">
-        {/* About text */}
-        <motion.div
-          initial={{ opacity: 0, y: 16 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, margin: "-80px" }}
-          transition={{ duration: 0.5 }}
-          className="space-y-4"
+        <motion.p
+          variants={fadeUp}
+          initial="hidden"
+          whileInView="visible"
+          viewport={viewportOnce}
+          className="max-w-[640px] text-base leading-relaxed lg:col-start-1 lg:row-start-2"
+          style={{ color: "var(--text-muted)" }}
         >
-          {copy[locale].sections.profile.about.map((paragraph, i) => (
-            <p key={i} className="text-body text-base leading-relaxed">
+          {t.description}
+        </motion.p>
+
+        <motion.div
+          variants={fadeUp}
+          initial="hidden"
+          whileInView="visible"
+          viewport={viewportOnce}
+          className="lg:col-start-2 lg:row-start-2 lg:row-span-2"
+        >
+          <ProfileNodeCard profile={profile} />
+        </motion.div>
+
+        <motion.div
+          variants={staggerContainer}
+          initial="hidden"
+          whileInView="visible"
+          viewport={viewportOnce}
+          className="lg:col-start-1 lg:row-start-3"
+        >
+          {t.about.map((paragraph, i) => (
+            <motion.p
+              key={`about-${i}`}
+              variants={fadeUp}
+              className="text-base leading-relaxed mb-4"
+              style={{ color: "var(--text-secondary)" }}
+            >
               {paragraph}
-            </p>
+            </motion.p>
           ))}
+
+          <motion.div variants={fadeUp} className="mt-8">
+            <p className="mono-label text-[10px] mb-4" style={{ color: "var(--accent-cyan)" }}>
+              {t.signature}
+            </p>
+            <ol className="space-y-3" aria-label={t.signatureAria}>
+              {profile.operationalSignature.map((item) => (
+                <li key={item.order} className="flex items-baseline gap-3">
+                  <span
+                    className="font-mono text-xs"
+                    style={{ color: "var(--accent-cyan)" }}
+                    aria-hidden="true"
+                  >
+                    {item.order}
+                  </span>
+                  <span className="text-sm" style={{ color: "var(--text-muted)" }}>
+                    {locale === "es" ? item.textEs : item.textEn}
+                  </span>
+                </li>
+              ))}
+            </ol>
+          </motion.div>
         </motion.div>
 
-        {/* Operational Signature */}
-        <motion.div
-          initial={{ opacity: 0, x: 16 }}
-          whileInView={{ opacity: 1, x: 0 }}
-          viewport={{ once: true, margin: "-80px" }}
-          transition={{ duration: 0.5, delay: 0.1 }}
-          className="panel-outline rounded-2xl border p-6"
-        >
-          <p className="mono-label mb-6 text-[10px]">{t.signature}</p>
-          <ol className="space-y-4" aria-label={t.signatureAria}>
-            {copy[locale].sections.profile.signatureItems.map((text, i) => (
-              <motion.li
-                key={text}
-                initial={{ opacity: 0, x: 10 }}
-                whileInView={{ opacity: 1, x: 0 }}
-                viewport={{ once: true }}
-                transition={{ delay: i * 0.07, duration: 0.4 }}
-                className="flex items-start gap-3"
-              >
-                <span
-                  className="mt-0.5 flex-shrink-0 font-mono text-[11px] font-semibold text-cyan-400"
-                  aria-hidden="true"
-                >
-                  {String(i + 1).padStart(2, "0")}
-                </span>
-                <span className="text-sm leading-snug" style={{ color: "var(--text-secondary)" }}>
-                  {text}
-                </span>
-              </motion.li>
-            ))}
-          </ol>
-        </motion.div>
       </div>
     </SectionContainer>
   );

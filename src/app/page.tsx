@@ -11,7 +11,7 @@ import { SystemProfileSection } from "@/components/sections/SystemProfileSection
 import { CurrentFocusSection } from "@/components/sections/CurrentFocusSection";
 import { CapabilityMatrixSection } from "@/components/sections/CapabilityMatrixSection";
 import { OperationalTimelineSection } from "@/components/sections/OperationalTimelineSection";
-import { ProjectLabSection } from "@/components/sections/ProjectLabSection";
+import { WorkCasesSection } from "@/components/sections/WorkCasesSection";
 import { CredentialVaultSection } from "@/components/sections/CredentialVaultSection";
 import { ProfessionalCVSection } from "@/components/sections/ProfessionalCVSection";
 import { ContactGatewaySection } from "@/components/sections/ContactGatewaySection";
@@ -34,7 +34,7 @@ export default function HomePage() {
       {visibleSections.skills !== false && <CapabilityMatrixSection skills={typedSkills} />}
       {visibleSections.credentials !== false && <CredentialVaultSection cv={typedCv} />}
       {visibleSections.experience !== false && <OperationalTimelineSection experience={typedExperience} />}
-      {visibleSections.projects !== false && <ProjectLabSection projects={typedProjects} />}
+      {visibleSections.projects !== false && <WorkCasesSection projects={typedProjects} />}
       {visibleSections.cv !== false && <ProfessionalCVSection cv={typedCv} />}
       {visibleSections.contact !== false && <ContactGatewaySection socialLinks={typedSocialLinks} />}
     </>

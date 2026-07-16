@@ -12,24 +12,37 @@ interface ThemeContextValue {
 
 const ThemeContext = createContext<ThemeContextValue | null>(null);
 
-export function ThemeProvider({
-  children,
-  defaultTheme = "dark",
-}: {
-  children: React.ReactNode;
-  defaultTheme?: Theme;
-}) {
-  const [theme, setTheme] = useState<Theme>(defaultTheme);
+export function ThemeProvider({ children }: { children: React.ReactNode }) {
+  const [theme, setTheme] = useState<Theme>("dark");
 
   useEffect(() => {
     const saved = window.localStorage.getItem("theme") as Theme | null;
-    if (saved === "dark" || saved === "light") setTheme(saved);
+    const valid = saved === "dark" || saved === "light" ? saved : "dark";
+    setTheme(valid);
   }, []);
 
   useEffect(() => {
     window.localStorage.setItem("theme", theme);
-    document.documentElement.dataset.theme = theme;
+    // Only set data-theme for light mode (dark is the CSS default)
+    if (theme === "light") {
+      document.documentElement.dataset.theme = "light";
+    } else {
+      delete document.documentElement.dataset.theme;
+    }
   }, [theme]);
+
+  useEffect(() => {
+    const mq = window.matchMedia("(prefers-color-scheme: dark)");
+    const handler = (e: MediaQueryListEvent) => {
+      const saved = window.localStorage.getItem("theme");
+      if (!saved) {
+        // Only follow system if user hasn't explicitly chosen
+        setTheme(e.matches ? "dark" : "light");
+      }
+    };
+    mq.addEventListener("change", handler);
+    return () => mq.removeEventListener("change", handler);
+  }, []);
 
   const value = useMemo(
     () => ({

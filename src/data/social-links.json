@@ -11,17 +11,6 @@
     "descriptionEn": "Professional profile"
   },
   {
-    "id": "instagram",
-    "labelEs": "Instagram",
-    "labelEn": "Instagram",
-    "url": "https://www.instagram.com/antoniogaspar.dev/",
-    "icon": "instagram",
-    "type": "professional",
-    "isPrimary": true,
-    "descriptionEs": "Contenido profesional",
-    "descriptionEn": "Professional content"
-  },
-  {
     "id": "credly",
     "labelEs": "Credly",
     "labelEn": "Credly",
@@ -44,36 +33,25 @@
     "descriptionEn": "Professional badges"
   },
   {
-    "id": "github",
-    "labelEs": "GitHub",
-    "labelEn": "GitHub",
-    "url": "",
-    "icon": "Github",
-    "type": "code",
-    "isPrimary": false,
-    "descriptionEs": "Repositorios de código",
-    "descriptionEn": "Code repositories"
-  },
-  {
     "id": "email",
     "labelEs": "Email",
     "labelEn": "Email",
-    "url": "",
+    "url": "mailto:contacto@antoniogaspar.dev",
     "icon": "Mail",
     "type": "contact",
-    "isPrimary": false,
+    "isPrimary": true,
     "descriptionEs": "Contacto directo",
     "descriptionEn": "Direct contact"
   },
   {
-    "id": "calendly",
-    "labelEs": "Calendly",
-    "labelEn": "Calendly",
-    "url": "",
-    "icon": "Calendar",
-    "type": "booking",
+    "id": "instagram",
+    "labelEs": "Instagram",
+    "labelEn": "Instagram",
+    "url": "https://www.instagram.com/antoniogaspar.dev/",
+    "icon": "instagram",
+    "type": "social",
     "isPrimary": false,
-    "descriptionEs": "Agendar reunión",
-    "descriptionEn": "Schedule a meeting"
+    "descriptionEs": "Contenido profesional",
+    "descriptionEn": "Professional content"
   }
 ]

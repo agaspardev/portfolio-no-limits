@@ -3,7 +3,6 @@ import { MapPin, Activity } from "lucide-react";
 import { StatusBadge } from "@/components/ui/StatusBadge";
 import { useLocale } from "@/components/providers/LocaleProvider";
 import { useTheme } from "@/components/providers/ThemeProvider";
-import { copy } from "@/data/copy";
 import type { Profile } from "@/types/portfolio";
 
 interface ProfileNodeCardProps {
@@ -13,7 +12,7 @@ interface ProfileNodeCardProps {
 export function ProfileNodeCard({ profile }: ProfileNodeCardProps) {
   const { locale } = useLocale();
   const { theme } = useTheme();
-  const t = copy[locale];
+
   return (
     <div
       className="relative overflow-hidden rounded-2xl border"
@@ -32,14 +31,14 @@ export function ProfileNodeCard({ profile }: ProfileNodeCardProps) {
         aria-hidden="true"
       />
 
-      <div className="p-6">
+      <div className="p-5">
         {/* Node label */}
-        <p className="mono-label mb-5 text-[10px]">
+        <p className="mono-label mb-3 text-[10px]">
           {locale === "es" ? "NODO DE PERFIL" : "PROFILE NODE"}
         </p>
 
         {/* Photo */}
-        <div className="relative mx-auto mb-5 h-24 w-24 overflow-hidden rounded-full border-2 border-cyan-400/30">
+        <div className="relative mx-auto mb-4 h-20 w-20 overflow-hidden rounded-full border-2 border-cyan-400/30">
           <div
             className="absolute inset-0 z-0 flex items-center justify-center text-2xl font-bold text-cyan-300"
             style={{ background: theme === "dark" ? "rgba(34, 211, 238, 0.08)" : "rgba(0, 120, 212, 0.06)" }}
@@ -51,7 +50,7 @@ export function ProfileNodeCard({ profile }: ProfileNodeCardProps) {
             src={profile.profileImage.src}
             alt={profile.profileImage.alt}
             fill
-            sizes="96px"
+            sizes="80px"
             className="z-10 object-cover"
             style={{ objectPosition: "center 24%" }}
             onError={() => {}}
@@ -60,29 +59,29 @@ export function ProfileNodeCard({ profile }: ProfileNodeCardProps) {
         </div>
 
         {/* Name & role */}
-        <div className="text-center mb-5">
+        <div className="text-center mb-4">
           <h2 className="text-base font-semibold text-slate-100 leading-snug">
             {profile.name}
           </h2>
-          <p className="text-sm text-slate-400 mt-1">{profile.currentRole}</p>
+          <p className="text-sm text-slate-400 mt-1">{locale === "es" ? profile.currentRoleEs : profile.currentRoleEn}</p>
           <p className="text-xs text-slate-500 mt-0.5">{profile.currentCompany}</p>
         </div>
 
         {/* Location */}
-        <div className="flex items-center justify-center gap-1.5 mb-5">
+        <div className="flex items-center justify-center gap-1.5 mb-4">
           <MapPin size={12} className="text-slate-500" aria-hidden="true" />
           <span className="text-xs text-slate-500">{profile.location}</span>
         </div>
 
         {/* Divider */}
         <div
-          className="mb-5 h-px"
+          className="mb-4 h-px"
           style={{ background: "rgba(148, 163, 184, 0.12)" }}
           aria-hidden="true"
         />
 
         {/* Status */}
-        <div className="flex items-center justify-between mb-4">
+        <div className="flex items-center justify-between mb-3">
           <div className="flex items-center gap-1.5">
             <Activity size={12} className="text-green-400" aria-hidden="true" />
             <span className="text-[11px] font-mono text-slate-500 uppercase tracking-wider">

@@ -4,13 +4,20 @@ import { IconResolver } from "@/components/ui/IconResolver";
 import { useLocale } from "@/components/providers/LocaleProvider";
 import { useTheme } from "@/components/providers/ThemeProvider";
 import { copy } from "@/data/copy";
+import socialLinksData from "@/data/social-links.json";
 import { CREDENTIAL_LINKS } from "@/lib/constants";
+import type { SocialLink } from "@/types/portfolio";
+
+const socialLinks = socialLinksData as SocialLink[];
 
 export function Footer() {
   const year = new Date().getFullYear();
   const { locale } = useLocale();
   const { theme } = useTheme();
   const t = copy[locale].footer;
+  const instagram = socialLinks.find(
+    (link) => link.id === "instagram" && link.url && !link.isPrimary,
+  );
   const iconButtonClass =
     "flex h-9 w-9 items-center justify-center rounded-lg border transition-colors";
   const iconButtonStyle =
@@ -60,16 +67,6 @@ export function Footer() {
               <IconResolver name="linkedin" size={16} className="text-inherit" />
             </a>
             <a
-              href="https://www.instagram.com/antoniogaspar.dev/"
-              target="_blank"
-              rel="noreferrer"
-              aria-label="Instagram"
-              className={iconButtonClass}
-              style={iconButtonStyle}
-            >
-              <IconResolver name="instagram" size={16} className="text-inherit" />
-            </a>
-            <a
               href="https://www.credly.com/users/antonio-gaspar.d79e2688/badges#credly"
               target="_blank"
               rel="noreferrer"
@@ -89,6 +86,18 @@ export function Footer() {
             >
               <IconResolver name="BadgeCheck" size={16} className="text-inherit" />
             </a>
+            {instagram && (
+              <a
+                href={instagram.url}
+                target="_blank"
+                rel="noreferrer"
+                aria-label={`${locale === "es" ? instagram.labelEs : instagram.labelEn} — ${locale === "es" ? instagram.descriptionEs : instagram.descriptionEn}`}
+                className={iconButtonClass}
+                style={iconButtonStyle}
+              >
+                <IconResolver name={instagram.icon} size={16} className="text-inherit" />
+              </a>
+            )}
           </div>
 
           {/* Right — Credits */}

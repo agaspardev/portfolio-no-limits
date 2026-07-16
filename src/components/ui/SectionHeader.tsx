@@ -53,7 +53,10 @@ export function SectionHeader({
     >
       <p className="mono-label mb-3">{eyebrow}</p>
       <h2
-        className="text-3xl md:text-4xl font-bold mb-4 leading-tight"
+        className={cn(
+          "text-3xl md:text-4xl font-bold leading-tight",
+          description ? "mb-4" : "mb-0",
+        )}
         style={{ color: theme === "dark" ? "rgb(248,250,252)" : "rgb(15,23,42)" }}
       >
         <ScrambleText text={title} active={active} />

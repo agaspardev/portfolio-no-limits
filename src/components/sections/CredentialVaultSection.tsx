@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useMemo, useState, type ReactNode } from "react";
+import { useMemo, useState, type ReactNode } from "react";
 import { motion } from "framer-motion";
 import { BookOpen, ExternalLink, GraduationCap, ShieldCheck } from "lucide-react";
 import { SectionContainer } from "@/components/layout/SectionContainer";
@@ -61,102 +61,24 @@ export function CredentialVaultSection({ cv }: CredentialVaultSectionProps) {
   const { locale } = useLocale();
   const { theme } = useTheme();
   const t = copy[locale].sections.credentials;
-  const [activeFilter, setActiveFilter] = useState<string>(t.filters.all);
+  const [activeFilter, setActiveFilter] = useState<string>("__all__");
   const themeCardClass = theme === "dark"
     ? "rounded-2xl border border-slate-800/60 bg-slate-950/50 p-4"
     : "rounded-2xl border border-slate-200/80 bg-white/95 p-4";
-  const courseAction = locale === "es" ? "Abrir" : "Open";
-  const certAction = locale === "es" ? "Ver credencial" : "View credential";
-  const ariaCourse = locale === "es" ? "Abrir curso: " : "Open course: ";
-  const certDetailText: Record<string, string> = locale === "es"
-    ? {}
-    : {
-        "Microsoft, emitida 04/06/2026, verificada.": "Microsoft, issued 06/04/2026, verified.",
-        "CertiProf, vigente hasta 06/06/2029, verificada.": "CertiProf, valid until 06/06/2029, verified.",
-        "Microsoft, emitida 05/06/2026, verificada.": "Microsoft, issued 06/05/2026, verified.",
-        "Microsoft, emitida 06/06/2026, verificada.": "Microsoft, issued 06/06/2026, verified.",
-        "CertiProf, vigente hasta 04/06/2029, verificada.": "CertiProf, valid until 06/04/2029, verified.",
-        "CertiProf, vigente hasta 02/06/2029, verificada.": "CertiProf, valid until 06/02/2029, verified.",
-        "CertiProf, emitida 02/06/2026, verificada.": "CertiProf, issued 06/02/2026, verified.",
-        "CertiProf, vigente hasta 11/07/2029, verificada.": "CertiProf, valid until 07/11/2029, verified.",
-        "CertiProf, vigente hasta 02/07/2029, verificada.": "CertiProf, valid until 07/02/2029, verified.",
-        "CertiProf, emitida 06/06/2026, vigente hasta 06/06/2027, verificada.": "CertiProf, issued 06/06/2026, valid until 06/06/2027, verified.",
-        "CertiProf, vigente hasta 06/07/2029, verificada.": "CertiProf, valid until 07/06/2029, verified.",
-      };
-  const groupLabels: Record<string, string> = locale === "es"
-    ? {
-        "LinkedIn Learning": "LinkedIn Learning",
-        "Escalab Academy": "Escalab Academy",
-        "Cloud y Azure": "Cloud y Azure",
-        Data: "Data",
-        "Inteligencia artificial": "Inteligencia artificial",
-        "Agile y Scrum": "Agile y Scrum",
-        Seguridad: "Seguridad",
-        "Gestión de proyectos": "Gestión de proyectos",
-      }
-    : {
-        "LinkedIn Learning": "LinkedIn Learning",
-        "Escalab Academy": "Escalab Academy",
-        "Cloud y Azure": "Cloud and Azure",
-        Data: "Data",
-        "Inteligencia artificial": "Artificial Intelligence",
-        "Agile y Scrum": "Agile and Scrum",
-        Seguridad: "Security",
-        "Gestión de proyectos": "Project Management",
-      };
-  const courseText: Record<string, string> = locale === "es"
-    ? {
-        "Fundamentos profesionales de gestión de proyectos": "Fundamentos profesionales de gestión de proyectos",
-        "Introducción a AWS: Conceptos de la nube": "Introducción a AWS: Conceptos de la nube",
-        "Introducción a AWS: Seguridad": "Introducción a AWS: Seguridad",
-        "Introducción a AWS: Tarifas y servicios de soporte": "Introducción a AWS: Tarifas y servicios de soporte",
-        "Bootcamp Full Stack Ninja": "Bootcamp Full Stack Ninja",
-        "HTML5, CSS3, JavaScript, Git/GitHub, JavaScript Master, React JS y React Native.": "HTML5, CSS3, JavaScript, Git/GitHub, JavaScript Master, React JS y React Native.",
-        "AWS.": "AWS.",
-      }
-    : {
-        "Fundamentos profesionales de gestión de proyectos": "Professional project management fundamentals",
-        "Introducción a AWS: Conceptos de la nube": "Introduction to AWS: Cloud concepts",
-        "Introducción a AWS: Seguridad": "Introduction to AWS: Security",
-        "Introducción a AWS: Tarifas y servicios de soporte": "Introduction to AWS: Pricing and support services",
-        "Bootcamp Full Stack Ninja": "Full Stack Ninja Bootcamp",
-        "HTML5, CSS3, JavaScript, Git/GitHub, JavaScript Master, React JS y React Native.": "HTML5, CSS3, JavaScript, Git/GitHub, JavaScript Master, React JS, and React Native.",
-        "AWS.": "AWS.",
-      };
-  const educationText: Record<string, string> = locale === "es"
-    ? {
-        "Analista Programador Computacional | En curso | Chile": "Analista Programador Computacional | En curso | Chile",
-        "Ingeniería de Sistemas | Formación en análisis de sistemas y programación | Venezuela": "Ingeniería de Sistemas | Formación en análisis de sistemas y programación | Venezuela",
-        "Analista Programador | C, PHP/MySQL, Visual Basic .NET, C# .NET, SQL, HTML, Linux, redes e IT.": "Analista Programador | C, PHP/MySQL, Visual Basic .NET, C# .NET, SQL, HTML, Linux, redes e IT.",
-        "Cisco IT Essentials | Cisco Networking Academy.": "Cisco IT Essentials | Cisco Networking Academy.",
-      }
-    : {
-        "Analista Programador Computacional | En curso | Chile": "Computer Programming Analyst | In progress | Chile",
-        "Ingeniería de Sistemas | Formación en análisis de sistemas y programación | Venezuela": "Systems Engineering | Training in systems analysis and programming | Venezuela",
-        "Analista Programador | C, PHP/MySQL, Visual Basic .NET, C# .NET, SQL, HTML, Linux, redes e IT.": "Programming Analyst | C, PHP/MySQL, Visual Basic .NET, C# .NET, SQL, HTML, Linux, networking, and IT.",
-      "Cisco IT Essentials | Cisco Networking Academy.": "Cisco IT Essentials | Cisco Networking Academy.",
-      };
-  const certAreaLabel: Record<string, string> = locale === "es"
-    ? {
-        "Cloud y Azure": "Cloud",
-        Data: "Data",
-        "Inteligencia artificial": "AI",
-        "Agile y Scrum": "Agile",
-        Seguridad: "Security",
-        "Gestión de proyectos": "PM",
-      }
-    : {
-        "Cloud y Azure": "Cloud",
-        Data: "Data",
-        "Inteligencia artificial": "AI",
-        "Agile y Scrum": "Agile",
-        Seguridad: "Security",
-        "Gestión de proyectos": "PM",
-      };
-
-  useEffect(() => {
-    setActiveFilter(t.filters.all);
-  }, [t.filters.all]);
+  const isEs = locale === "es";
+  const courseAction = isEs ? "Abrir" : "Open";
+  const certAction = isEs ? "Ver credencial" : "View credential";
+  const ariaCourse = isEs ? "Abrir curso: " : "Open course: ";
+  // Categorization codes (identical in both locales), not a translation.
+  const certAreaLabel: Record<string, string> = {
+    "Cloud y Azure": "Cloud",
+    Data: "Data",
+    "Inteligencia artificial": "AI",
+    "Agile y Scrum": "Agile",
+    Seguridad: "Security",
+    "Gestión de proyectos": "PM",
+    "Trabajo remoto": "Work",
+  };
 
   const certifications = useMemo(
     () =>
@@ -164,13 +86,13 @@ export function CredentialVaultSection({ cv }: CredentialVaultSectionProps) {
         group.items.map((item) => ({
           title: item.title,
           href: item.href,
-          detail: item.detail,
-          tag: item.tag ?? (locale === "es" ? "Verificado" : "Verified"),
+          detail: isEs ? item.detailEs : item.detailEn,
+          tag: item.tag ?? (isEs ? "Verificado" : "Verified"),
           filters: item.filters ?? [],
           group: group.group,
         })),
       ),
-    [cv.certifications, locale],
+    [cv.certifications, isEs],
   );
 
   const availableFilters = useMemo(() => {
@@ -180,11 +102,11 @@ export function CredentialVaultSection({ cv }: CredentialVaultSectionProps) {
         filters.add(filter);
       }
     }
-    return [t.filters.all, ...filters];
+    return ["__all__", ...filters];
   }, [certifications]);
 
   const filtered =
-    activeFilter === t.filters.all
+    activeFilter === "__all__"
       ? certifications
       : certifications.filter((c) => c.filters?.includes(activeFilter));
 
@@ -210,7 +132,7 @@ export function CredentialVaultSection({ cv }: CredentialVaultSectionProps) {
           >
             {availableFilters.map((filter) => {
               const normalized = filter.toLowerCase() as keyof typeof t.filters;
-              const label = t.filters[normalized] ?? filter;
+              const label = filter === "__all__" ? t.filters.all : (t.filters[normalized] ?? filter);
               return (
               <button
                 key={filter}
@@ -259,7 +181,7 @@ export function CredentialVaultSection({ cv }: CredentialVaultSectionProps) {
                     {cert.title}
                   </h4>
                   {cert.detail && (
-                    <p className="text-xs" style={{ color: theme === "dark" ? "rgb(100,116,139)" : "rgb(71,85,105)" }}>{certDetailText[cert.detail] ?? cert.detail}</p>
+                    <p className="text-xs" style={{ color: theme === "dark" ? "rgb(100,116,139)" : "rgb(71,85,105)" }}>{cert.detail}</p>
                   )}
                 </div>
                 {cert.href && (
@@ -289,11 +211,14 @@ export function CredentialVaultSection({ cv }: CredentialVaultSectionProps) {
                 <div className="space-y-3">
               {cv.courses
                 .flatMap((group) =>
-                  group.items.map((item) => ({ ...item, group: groupLabels[group.group] ?? group.group })),
+                  group.items.map((item) => ({ ...item, group: group.group })),
                 )
-                .map((course) => (
+                .map((course) => {
+                  const courseTitle = isEs ? course.titleEs : course.titleEn;
+                  const courseDetail = isEs ? course.detailEs : course.detailEn;
+                  return (
                   <div
-                    key={course.title}
+                    key={course.titleEn}
                     className={themeCardClass}
                   >
                     <div className="flex items-start justify-between gap-3">
@@ -302,11 +227,11 @@ export function CredentialVaultSection({ cv }: CredentialVaultSectionProps) {
                           {course.group}
                         </p>
                         <h4 className="text-sm font-semibold" style={{ color: theme === "dark" ? "rgb(248,250,252)" : "rgb(15,23,42)" }}>
-                          {courseText[course.title] ?? course.title}
+                          {courseTitle}
                         </h4>
-                        {course.detail && (
+                        {courseDetail && (
                           <p className="text-xs mt-1" style={{ color: theme === "dark" ? "rgb(100,116,139)" : "rgb(71,85,105)" }}>
-                            {courseText[course.detail] ?? course.detail}
+                            {courseDetail}
                           </p>
                         )}
                       </div>
@@ -316,17 +241,18 @@ export function CredentialVaultSection({ cv }: CredentialVaultSectionProps) {
                           target="_blank"
                           rel="noreferrer"
                           className="inline-flex items-center gap-1 text-[11px] text-cyan-400/80 hover:text-cyan-300"
-                          aria-label={`${ariaCourse}${course.title}`}
+                          aria-label={`${ariaCourse}${courseTitle}`}
                         >
                           {courseAction}
                           <ExternalLink size={11} aria-hidden="true" />
                         </a>
                       ) : (
-                          <StatusBadge label={locale === "es" ? "Referencia" : "Reference"} variant="operational" />
+                          <StatusBadge label={isEs ? "Referencia" : "Reference"} variant="operational" />
                       )}
                     </div>
                   </div>
-                ))}
+                  );
+                })}
             </div>
           </SectionBlock>
 
@@ -344,10 +270,10 @@ export function CredentialVaultSection({ cv }: CredentialVaultSectionProps) {
                   </p>
                   {group.items.map((item) => (
                     <div
-                      key={`${group.group}-${item}`}
+                      key={`${group.group}-${item.en}`}
                       className={themeCardClass}
                     >
-                      <p className="text-sm" style={{ color: theme === "dark" ? "rgb(226,232,240)" : "rgb(15,23,42)" }}>{educationText[item] ?? item}</p>
+                      <p className="text-sm" style={{ color: theme === "dark" ? "rgb(226,232,240)" : "rgb(15,23,42)" }}>{isEs ? item.es : item.en}</p>
                     </div>
                   ))}
                 </div>

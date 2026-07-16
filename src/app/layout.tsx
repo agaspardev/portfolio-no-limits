@@ -60,9 +60,10 @@ export default function RootLayout({
       lang={site.language}
       data-theme="dark"
       className={`${inter.variable} ${jetBrainsMono.variable}`}
+      suppressHydrationWarning
     >
       <body className="min-h-screen font-sans text-slate-50 antialiased">
-        <ThemeProvider defaultTheme="dark">
+        <ThemeProvider>
           <LocaleProvider defaultLocale="es">
             <BackgroundGrid />
             <InitialLoadingOverlay />

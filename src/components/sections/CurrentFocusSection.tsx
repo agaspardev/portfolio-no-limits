@@ -1,85 +1,57 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { Cloud, Code2, Sparkles, ShieldCheck, GitBranch, Workflow } from "lucide-react";
 import { SectionContainer } from "@/components/layout/SectionContainer";
 import { SectionHeader } from "@/components/ui/SectionHeader";
+import { IconResolver } from "@/components/ui/IconResolver";
 import { useLocale } from "@/components/providers/LocaleProvider";
 import { copy } from "@/data/copy";
+import { staggerContainer, fadeUp, viewportOnce } from "@/lib/animations";
 
-const focusIcons = {
-  cloud: Cloud,
-  development: Code2,
-  automation: Workflow,
-  security: ShieldCheck,
-  ai: Sparkles,
-  integration: GitBranch,
-} as const;
+const FOCUS_ICONS: Record<string, string> = {
+  cloud: "Cloud",
+  development: "Code2",
+  automation: "Zap",
+  security: "ShieldCheck",
+  ai: "Sparkles",
+  integration: "Workflow",
+};
 
 export function CurrentFocusSection() {
   const { locale } = useLocale();
   const t = copy[locale].sections.focus;
 
-  const items = [
-    { key: "cloud", accent: "rgba(0, 120, 212, 0.12)" },
-    { key: "development", accent: "rgba(34, 211, 238, 0.10)" },
-    { key: "automation", accent: "rgba(34, 211, 238, 0.08)" },
-    { key: "security", accent: "rgba(245, 158, 11, 0.10)" },
-    { key: "ai", accent: "rgba(139, 92, 246, 0.10)" },
-    { key: "integration", accent: "rgba(16, 185, 129, 0.10)" },
-  ] as const;
-
   return (
-    <SectionContainer id="focus" className="border-t border-slate-800/40">
-      <SectionHeader
-        eyebrow={t.eyebrow}
-        title={t.title}
-        description={t.description}
-      />
+    <SectionContainer id="focus">
+      <SectionHeader eyebrow={t.eyebrow} title={t.title} description={t.description} />
 
-      <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-4">
-        {items.map((item, index) => {
-          const data = t.items[item.key];
-          const Icon = focusIcons[item.key];
-          return (
-            <motion.article
-              key={item.key}
-              initial={{ opacity: 0, y: 14 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true, margin: "-60px" }}
-              transition={{ duration: 0.35, delay: index * 0.05 }}
-              className="surface-card surface-card--bright p-5"
-            >
-              <div className="flex items-start gap-3">
-                <div
-                  className="flex h-10 w-10 flex-shrink-0 items-center justify-center rounded-xl border"
-                  style={{
-                    background: item.accent,
-                    borderColor: "var(--border-subtle)",
-                  }}
-                  aria-hidden="true"
-                >
-                  <Icon size={16} className="icon-accent" />
-                </div>
-                <div>
-                  <h3
-                    className="text-sm font-semibold"
-                    style={{ color: "var(--text-primary)" }}
-                  >
-                    {data.title}
-                  </h3>
-                  <p
-                    className="mt-1 text-sm leading-relaxed"
-                    style={{ color: "var(--text-muted)" }}
-                  >
-                    {data.description}
-                  </p>
-                </div>
-              </div>
-            </motion.article>
-          );
-        })}
-      </div>
+      <motion.div
+        variants={staggerContainer}
+        initial="hidden"
+        whileInView="visible"
+        viewport={viewportOnce}
+        className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4"
+        role="list"
+      >
+        {Object.entries(t.items).map(([key, item]) => (
+          <motion.article
+            key={key}
+            variants={fadeUp}
+            className="surface-card surface-card-hover p-5 flex flex-col gap-3"
+            role="listitem"
+          >
+            <div className="flex h-10 w-10 items-center justify-center rounded-lg icon-chip" aria-hidden="true">
+              <IconResolver name={FOCUS_ICONS[key] ?? "Activity"} size={18} className="icon-accent" />
+            </div>
+            <h3 className="text-sm font-semibold" style={{ color: "var(--text-primary)" }}>
+              {item.title}
+            </h3>
+            <p className="text-xs leading-relaxed" style={{ color: "var(--text-muted)" }}>
+              {item.description}
+            </p>
+          </motion.article>
+        ))}
+      </motion.div>
     </SectionContainer>
   );
 }
