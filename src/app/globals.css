@@ -47,6 +47,16 @@
   --glow-cyan: 0 0 24px rgba(34, 211, 238, 0.12);
   --glow-cyan-strong: 0 0 40px rgba(34, 211, 238, 0.20);
 
+  /* Initial presentation — Dark */
+  --intro-bg-start: #000000;
+  --intro-bg-end: #020617;
+  --intro-text: #f8fafc;
+  --intro-muted: #94a3b8;
+  --intro-error: #fb7185;
+  --intro-resolved: #2dd4bf;
+  --intro-line: rgba(34, 211, 238, 0.78);
+  --intro-grid: rgba(148, 163, 184, 0.07);
+
   /* Terminal palette — Dark (default) */
   --terminal-bg: rgba(2, 6, 23, 0.95);
   --terminal-header-bg: rgba(15, 23, 42, 0.90);
@@ -97,6 +107,16 @@
 
   --glow-cyan: 0 0 24px rgba(6, 182, 212, 0.10);
   --glow-cyan-strong: 0 0 40px rgba(6, 182, 212, 0.18);
+
+  /* Initial presentation — Light */
+  --intro-bg-start: #f8fafc;
+  --intro-bg-end: #e2e8f0;
+  --intro-text: #0f172a;
+  --intro-muted: #475569;
+  --intro-error: #b91c1c;
+  --intro-resolved: #047857;
+  --intro-line: rgba(14, 116, 144, 0.74);
+  --intro-grid: rgba(15, 23, 42, 0.07);
 
   /* Terminal palette — Light */
   --terminal-bg: rgba(248, 250, 252, 0.95);
@@ -164,6 +184,169 @@
    ───────────────────────────────────────── */
 
 @layer components {
+  .intro-overlay {
+    position: fixed;
+    inset: 0;
+    z-index: 100;
+    overflow: hidden;
+    background:
+      radial-gradient(circle at 50% 46%, color-mix(in srgb, var(--intro-line) 12%, transparent), transparent 38%),
+      linear-gradient(180deg, var(--intro-bg-start), var(--intro-bg-end));
+    color: var(--intro-text);
+    font-family: var(--font-mono);
+  }
+
+  .intro-grid {
+    position: absolute;
+    inset: 0;
+    background-image:
+      linear-gradient(var(--intro-grid) 1px, transparent 1px),
+      linear-gradient(90deg, var(--intro-grid) 1px, transparent 1px);
+    background-size: 64px 64px;
+    mask-image: radial-gradient(circle at center, black 0%, transparent 72%);
+  }
+
+  .intro-header {
+    position: absolute;
+    top: clamp(1.25rem, 3vw, 2.5rem);
+    right: clamp(1.25rem, 4vw, 4rem);
+    left: clamp(1.25rem, 4vw, 4rem);
+    display: flex;
+    justify-content: space-between;
+    gap: 1rem;
+    color: var(--intro-muted);
+    font-size: clamp(0.65rem, 1vw, 0.78rem);
+    letter-spacing: 0.2em;
+  }
+
+  .intro-skip {
+    position: absolute;
+    right: clamp(1.25rem, 4vw, 4rem);
+    bottom: clamp(1.25rem, 3vw, 2.5rem);
+    z-index: 2;
+    color: var(--intro-muted);
+    font-size: 0.7rem;
+    letter-spacing: 0.14em;
+    cursor: pointer;
+    transition: color 160ms ease;
+  }
+
+  .intro-skip:hover,
+  .intro-skip:focus-visible {
+    color: var(--intro-text);
+  }
+
+  .intro-stage {
+    position: relative;
+    display: grid;
+    min-height: 100dvh;
+    place-items: center;
+    padding: 5rem 1.5rem 7rem;
+    text-align: center;
+  }
+
+  .intro-message {
+    display: grid;
+    justify-items: center;
+    gap: 1rem;
+    width: min(70rem, 100%);
+  }
+
+  .intro-code,
+  .intro-resolved {
+    font-weight: 700;
+    letter-spacing: 0.28em;
+  }
+
+  .intro-code {
+    color: var(--intro-error);
+    font-size: clamp(0.92rem, 1.5vw, 1.15rem);
+  }
+
+  .intro-resolved {
+    color: var(--intro-resolved);
+    font-size: clamp(0.72rem, 1.1vw, 0.9rem);
+  }
+
+  .intro-title {
+    display: grid;
+    color: var(--intro-text);
+    font-size: clamp(2rem, 6vw, 6rem);
+    font-weight: 700;
+    line-height: 0.98;
+    letter-spacing: -0.055em;
+    text-wrap: balance;
+  }
+
+  .intro-title span {
+    color: var(--intro-muted);
+  }
+
+  .intro-title--online span {
+    margin-top: 0.65rem;
+    color: var(--intro-resolved);
+    font-size: clamp(0.75rem, 1.2vw, 1rem);
+    letter-spacing: 0.24em;
+    line-height: 1.4;
+  }
+
+  .intro-progress {
+    position: absolute;
+    bottom: clamp(1.25rem, 3vw, 2.5rem);
+    left: clamp(1.25rem, 4vw, 4rem);
+    width: min(22rem, calc(100vw - 12rem));
+  }
+
+  .intro-progress__meta {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 0.55rem;
+    color: var(--intro-muted);
+    font-size: 0.65rem;
+    letter-spacing: 0.14em;
+  }
+
+  .intro-progress__track {
+    height: 1px;
+    overflow: hidden;
+    background: var(--intro-grid);
+  }
+
+  .intro-progress__value {
+    width: 100%;
+    height: 100%;
+    background: var(--intro-line);
+    box-shadow: 0 0 18px var(--intro-line);
+    transform-origin: left;
+  }
+
+  .intro-cut-line {
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    height: 2px;
+    background: var(--intro-line);
+    box-shadow: 0 -6px 28px var(--intro-line);
+    transform-origin: center;
+  }
+
+  @media (max-width: 640px) {
+    .intro-header span:last-child,
+    .intro-progress__meta span:first-child {
+      display: none;
+    }
+
+    .intro-progress {
+      right: 8.5rem;
+      width: auto;
+    }
+
+    .intro-title {
+      letter-spacing: -0.04em;
+    }
+  }
+
   .surface-card {
     background: var(--glass-bg);
     border: 1px solid var(--glass-border);

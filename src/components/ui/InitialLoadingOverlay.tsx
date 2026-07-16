@@ -1,144 +1,164 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useCallback, useEffect, useRef, useState } from "react";
 import { AnimatePresence, motion } from "framer-motion";
-import { useTheme } from "@/components/providers/ThemeProvider";
+import { useLocale } from "@/components/providers/LocaleProvider";
+import {
+  INTRO_COPY,
+  INTRO_SESSION_KEY,
+  INTRO_TIMING,
+  shouldShowIntro,
+} from "@/lib/intro-sequence";
 
-type Phase = "hidden" | "error" | "glitch" | "fade";
+type Phase = "hidden" | "statement" | "resolved" | "exit";
 
 export function InitialLoadingOverlay() {
-  const { theme } = useTheme();
+  const { locale } = useLocale();
   const [phase, setPhase] = useState<Phase>("hidden");
-  const [errorWords, setErrorWords] = useState<string[]>([]);
-  const [glitchText, setGlitchText] = useState("SYSTEM DISCONNECTING...");
+  const timersRef = useRef<number[]>([]);
+  const copy = INTRO_COPY[locale];
 
-  useEffect(() => {
-    const navType = (window.performance.getEntriesByType("navigation")[0] as PerformanceNavigationTiming | undefined)?.type;
-    const shouldShow = navType === "reload" || !window.sessionStorage.getItem("no-limits-intro-seen");
-    if (!shouldShow) return;
-
-    window.sessionStorage.setItem("no-limits-intro-seen", "1");
-
-    const phrase = "ERROR 404: Conventional developer not found.";
-    const words = phrase.split(" ");
-    let wordIndex = 0;
-
-    const startTimer = window.setTimeout(() => setPhase("error"), 0);
-    const errorTimer = window.setInterval(() => {
-      wordIndex += 1;
-      setErrorWords(words.slice(0, wordIndex));
-
-      if (wordIndex >= words.length) {
-        window.clearInterval(errorTimer);
-        window.setTimeout(() => setPhase("glitch"), 450);
-      }
-    }, 560);
-
-    return () => {
-      window.clearTimeout(startTimer);
-      window.clearInterval(errorTimer);
-    };
+  const clearTimers = useCallback(() => {
+    timersRef.current.forEach((timer) => window.clearTimeout(timer));
+    timersRef.current = [];
   }, []);
 
-  useEffect(() => {
-    if (phase !== "glitch") return;
+  const dismiss = useCallback(() => {
+    clearTimers();
+    setPhase((current) => (current === "hidden" ? "hidden" : "exit"));
+  }, [clearTimers]);
 
-    const glitchMessages = [
-      "SYSTEM DISCONNECTING...",
-      "RENDER LINK LOST",
-      "CONTROL SIGNAL FAILED",
-      "RECOVERING...",
+  useEffect(() => {
+    const seen = window.sessionStorage.getItem(INTRO_SESSION_KEY);
+    const navigationEntry = window.performance.getEntriesByType(
+      "navigation",
+    )[0] as PerformanceNavigationTiming | undefined;
+    const isReload = navigationEntry?.type === "reload";
+    const reducedMotion = window.matchMedia(
+      "(prefers-reduced-motion: reduce)",
+    ).matches;
+
+    if (!shouldShowIntro(seen, reducedMotion, isReload)) return;
+
+    window.sessionStorage.setItem(INTRO_SESSION_KEY, "1");
+
+    timersRef.current = [
+      window.setTimeout(() => setPhase("statement"), 0),
+      window.setTimeout(() => setPhase("resolved"), INTRO_TIMING.resolve),
+      window.setTimeout(() => setPhase("exit"), INTRO_TIMING.exit),
     ];
-    let index = 0;
 
-    const timer = window.setInterval(() => {
-      index += 1;
-      if (index < glitchMessages.length) {
-        setGlitchText(glitchMessages[index]);
-      } else {
-        window.clearInterval(timer);
-        window.setTimeout(() => setPhase("fade"), 420);
-      }
-    }, 420);
+    const handleKeyDown = (event: KeyboardEvent) => {
+      if (event.key === "Escape") dismiss();
+    };
 
-    return () => window.clearInterval(timer);
-  }, [phase]);
+    window.addEventListener("keydown", handleKeyDown);
+
+    return () => {
+      clearTimers();
+      window.removeEventListener("keydown", handleKeyDown);
+    };
+  }, [clearTimers, dismiss]);
 
   useEffect(() => {
-    if (phase !== "fade") return;
+    if (phase !== "exit") return;
 
-    const timer = window.setTimeout(() => setPhase("hidden"), 900);
+    const timer = window.setTimeout(
+      () => setPhase("hidden"),
+      INTRO_TIMING.exitDuration,
+    );
+
     return () => window.clearTimeout(timer);
   }, [phase]);
 
-  if (phase === "hidden") return null;
-
   return (
     <AnimatePresence>
-      <motion.div
-        initial={{ opacity: 1 }}
-        animate={{ opacity: phase === "fade" ? 0 : 1 }}
-        exit={{ opacity: 0 }}
-        transition={{ duration: 1, ease: "easeOut" }}
-        className="fixed inset-0 z-[100] overflow-hidden"
-        style={{
-          background:
-            theme === "dark"
-              ? "linear-gradient(180deg, rgba(0,0,0,1), rgba(2,6,23,1))"
-              : "linear-gradient(180deg, rgba(255,255,255,1), rgba(241,245,249,1))",
-        }}
-        aria-label="Loading intro"
-      >
-          <div className="flex h-full w-full items-center justify-center px-6 text-center">
-            {phase === "error" && (
-              <motion.p
-                initial={{ opacity: 0, y: 24, filter: "blur(10px)" }}
-                animate={{ opacity: 1, y: 0, filter: "blur(0px)" }}
-                transition={{ duration: 0.45 }}
-                className="max-w-5xl font-mono text-[clamp(1.8rem,4vw,4.3rem)] font-bold leading-[1.08] tracking-[-0.03em] sm:text-[clamp(2.2rem,4.4vw,4.8rem)]"
-                style={{ color: "rgb(248,250,252)" }}
-              >
-                <span className="text-red-400">ERROR 404:</span>{" "}
-                <span className="text-slate-100">
-                  {errorWords.slice(2).join(" ")}
-                </span>
-                <span className="inline-block w-2 animate-pulse text-cyan-300">▍</span>
-              </motion.p>
-            )}
+      {phase !== "hidden" && (
+        <motion.div
+          key="initial-intro"
+          initial={{ y: 0 }}
+          animate={{ y: phase === "exit" ? "-100%" : 0 }}
+          exit={{ y: "-100%" }}
+          transition={{
+            duration: INTRO_TIMING.exitDuration / 1000,
+            ease: [0.76, 0, 0.24, 1],
+          }}
+          className={`intro-overlay ${phase === "exit" ? "pointer-events-none" : ""}`}
+          role="dialog"
+          aria-modal="true"
+          aria-label={copy.ariaLabel}
+        >
+          <div className="intro-grid" aria-hidden="true" />
 
-            {phase === "glitch" && (
-              <motion.div
-                initial={{ opacity: 0, scale: 0.98 }}
-                animate={{ opacity: 1, scale: 1 }}
-                transition={{ duration: 0.25 }}
-                className="relative"
-              >
-                <motion.p
-                  animate={{
-                    x: [0, -2, 2, -1, 1, 0],
-                    opacity: [1, 0.82, 1, 0.88, 1],
-                  }}
-                  transition={{ duration: 0.32, repeat: 4, repeatType: "loop" }}
-                  className="font-mono text-[clamp(1.2rem,2.6vw,2.2rem)] font-semibold uppercase tracking-[0.35em]"
-                  style={{ color: "rgb(248,250,252)" }}
+          <header className="intro-header" aria-hidden="true">
+            <span>NO LIMITS / 00</span>
+            <span>{copy.systemLabel}</span>
+          </header>
+
+          <button type="button" className="intro-skip" onClick={dismiss}>
+            {copy.skip} <span aria-hidden="true">[ESC]</span>
+          </button>
+
+          <div className="intro-stage">
+            <AnimatePresence mode="wait">
+              {phase === "statement" ? (
+                <motion.div
+                  key="statement"
+                  initial={{ opacity: 0, y: 22 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  exit={{ opacity: 0, y: -18 }}
+                  transition={{ duration: 0.28, ease: "easeOut" }}
+                  className="intro-message"
                 >
-                  {glitchText}
-                </motion.p>
-                <div
-                  className="absolute inset-x-0 top-1/2 h-px"
-                  style={{
-                    background:
-                      "linear-gradient(90deg, transparent, rgba(34,211,238,0.9), transparent)",
-                    boxShadow: "0 0 18px rgba(34,211,238,0.35)",
-                  }}
-                  aria-hidden="true"
-                />
-              </motion.div>
-            )}
-
-            {/* states phase removed on request */}
+                  <p className="intro-code">ERROR 404</p>
+                  <p className="intro-title">
+                    Conventional developer
+                    <span>not found.</span>
+                  </p>
+                </motion.div>
+              ) : (
+                <motion.div
+                  key="resolved"
+                  initial={{ opacity: 0, y: 18 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  exit={{ opacity: 0 }}
+                  transition={{ duration: 0.26, ease: "easeOut" }}
+                  className="intro-message"
+                >
+                  <p className="intro-resolved">{copy.resolved}</p>
+                  <p className="intro-title intro-title--online">
+                    Antonio Gaspar
+                    <span>{copy.online}</span>
+                  </p>
+                </motion.div>
+              )}
+            </AnimatePresence>
           </div>
-      </motion.div>
+
+          <div className="intro-progress" aria-hidden="true">
+            <div className="intro-progress__meta">
+              <span>{copy.match}</span>
+              <span>{phase === "statement" ? "404" : "200"}</span>
+            </div>
+            <div className="intro-progress__track">
+              <motion.div
+                className="intro-progress__value"
+                initial={{ scaleX: 0 }}
+                animate={{ scaleX: 1 }}
+                transition={{ duration: INTRO_TIMING.exit / 1000, ease: "linear" }}
+              />
+            </div>
+          </div>
+
+          <motion.div
+            className="intro-cut-line"
+            initial={{ scaleX: 0 }}
+            animate={{ scaleX: phase === "exit" ? 1 : 0 }}
+            transition={{ duration: 0.28, ease: "easeOut" }}
+            aria-hidden="true"
+          />
+        </motion.div>
+      )}
     </AnimatePresence>
   );
 }

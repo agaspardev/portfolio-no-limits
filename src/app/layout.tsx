@@ -12,6 +12,7 @@ import { InitialLoadingOverlay } from "@/components/ui/InitialLoadingOverlay";
 import { BackToTopButton } from "@/components/ui/BackToTopButton";
 import { LocaleProvider } from "@/components/providers/LocaleProvider";
 import { ThemeProvider } from "@/components/providers/ThemeProvider";
+import { THEME_INITIALIZATION_SCRIPT } from "@/lib/theme";
 
 const inter = Inter({
   subsets: ["latin"],
@@ -62,6 +63,11 @@ export default function RootLayout({
       className={`${inter.variable} ${jetBrainsMono.variable}`}
       suppressHydrationWarning
     >
+      <head>
+        <script
+          dangerouslySetInnerHTML={{ __html: THEME_INITIALIZATION_SCRIPT }}
+        />
+      </head>
       <body className="min-h-screen font-sans text-slate-50 antialiased">
         <ThemeProvider>
           <LocaleProvider defaultLocale="es">

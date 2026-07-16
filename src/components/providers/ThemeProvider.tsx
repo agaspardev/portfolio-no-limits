@@ -1,8 +1,7 @@
 "use client";
 
 import { createContext, useContext, useEffect, useMemo, useState } from "react";
-
-type Theme = "dark" | "light";
+import { DEFAULT_THEME, resolveStoredTheme, type Theme } from "@/lib/theme";
 
 interface ThemeContextValue {
   theme: Theme;
@@ -13,23 +12,26 @@ interface ThemeContextValue {
 const ThemeContext = createContext<ThemeContextValue | null>(null);
 
 export function ThemeProvider({ children }: { children: React.ReactNode }) {
-  const [theme, setTheme] = useState<Theme>("dark");
+  const [theme, setTheme] = useState<Theme>(DEFAULT_THEME);
+  const [initialized, setInitialized] = useState(false);
 
   useEffect(() => {
-    const saved = window.localStorage.getItem("theme") as Theme | null;
-    const valid = saved === "dark" || saved === "light" ? saved : "dark";
-    setTheme(valid);
+    const storedTheme = resolveStoredTheme(window.localStorage.getItem("theme"));
+    const timer = window.setTimeout(() => {
+      setTheme(storedTheme);
+      setInitialized(true);
+    }, 0);
+
+    return () => window.clearTimeout(timer);
   }, []);
 
   useEffect(() => {
+    if (!initialized) return;
+
     window.localStorage.setItem("theme", theme);
-    // Only set data-theme for light mode (dark is the CSS default)
-    if (theme === "light") {
-      document.documentElement.dataset.theme = "light";
-    } else {
-      delete document.documentElement.dataset.theme;
-    }
-  }, [theme]);
+    document.documentElement.dataset.theme = theme;
+    document.documentElement.style.colorScheme = theme;
+  }, [initialized, theme]);
 
   useEffect(() => {
     const mq = window.matchMedia("(prefers-color-scheme: dark)");
