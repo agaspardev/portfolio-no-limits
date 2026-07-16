@@ -79,6 +79,33 @@ describe("chat context selection", () => {
     expect(buildChatContext("Python", "en").context).toContain("Systems Integrator");
   });
 
+  it("keeps an English substantive question in English when the UI is Spanish", () => {
+    const response = getDeterministicChatResponse(
+      "Hi, what experience does Antonio have?",
+      "es",
+    );
+    expect(response).toContain("Antonio has worked as");
+    expect(response).not.toContain("Integrador de Sistemas");
+  });
+
+  it.each([
+    ["rust", "Rust no forma parte"],
+    ["aws", "AWS es parte"],
+    ["cv", "El CV de Antonio"],
+    ["email", "contacto@antoniogaspar.dev"],
+  ])("does not classify the valid domain input %s as gibberish", (question, expected) => {
+    expect(getDeterministicChatResponse(question, "es")).toContain(expected);
+  });
+
+  it("keeps generic deterministic answers concise", () => {
+    const response = getDeterministicChatResponse(
+      "¿Qué experiencia profesional tiene Antonio?",
+      "es",
+    );
+    expect(response).not.toBeNull();
+    expect(response!.split(/\s+/).length).toBeLessThanOrEqual(50);
+  });
+
   it("answers the verified Python FAQ consistently, with an optional greeting", () => {
     expect(getDeterministicChatResponse(
       "¿Qué experiencia tiene en Python?",
@@ -252,17 +279,19 @@ describe("chat context selection", () => {
     );
   });
 
-  it("does not reinterpret a professional DevOps question as a count follow-up", () => {
+  it("answers DevOps experience questions deterministically", () => {
     const history = [
       { role: "user" as const, content: "¿Cuántas certificaciones tiene?" },
       { role: "assistant" as const, content: "Antonio tiene 13 credenciales." },
       { role: "user" as const, content: "¿Qué experiencia tiene con DevOps?" },
     ];
-    expect(getDeterministicChatResponse(
+    const response = getDeterministicChatResponse(
       "¿Qué experiencia tiene con DevOps?",
       "es",
       history,
-    )).toBeNull();
+    );
+    expect(response).not.toBeNull();
+    expect(response).toContain("DevOps");
   });
 
   it("derives the canonical contact email from social links", () => {
@@ -311,11 +340,13 @@ describe("chat context selection", () => {
     expect(response).not.toMatch(/enviado|sent successfully/i);
   });
 
-  it("does not intercept generic professional experience questions as contact", () => {
-    expect(getDeterministicChatResponse(
+  it("answers generic professional experience questions deterministically", () => {
+    const response = getDeterministicChatResponse(
       "¿Qué experiencia profesional tiene Antonio?",
       "es",
-    )).toBeNull();
+    );
+    expect(response).not.toBeNull();
+    expect(response).toContain("Innobyte");
   });
 
   it.each([
