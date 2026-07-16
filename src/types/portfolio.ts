@@ -37,7 +37,8 @@ export interface Profile {
   name: string;
   shortName: string;
   role: string;
-  currentRole: string;
+  currentRoleEs: string;
+  currentRoleEn: string;
   currentCompany: string;
   location: string;
   heroEyebrow: string;
@@ -58,7 +59,8 @@ export interface Profile {
   heroChips: HeroChip[];
   operationalSignature: {
     order: string;
-    text: string;
+    textEs: string;
+    textEn: string;
   }[];
 }
 
@@ -119,17 +121,23 @@ export interface Project {
   id: string;
   title: string;
   group: string;
-  context: string;
-  role: string;
+  contextEs: string;
+  contextEn: string;
+  roleEs: string;
+  roleEn: string;
   priority: number;
   type: string;
-  status: string;
+  statusEs: string;
+  statusEn: string;
   statusVariant: StatusVariant;
-  description: string;
+  descriptionEs: string;
+  descriptionEn: string;
   contribution: string[];
-  impact: string[];
+  impactEs: string[];
+  impactEn: string[];
   stack: string[];
-  highlights: string[];
+  highlightsEs: string[];
+  highlightsEn: string[];
   repositoryUrl: string;
   demoUrl: string;
   icon: string;
@@ -141,16 +149,18 @@ export interface SocialLink {
   labelEn: string;
   url: string;
   icon: string;
-  type: "professional" | "credentials" | "code" | "contact" | "booking";
+  type: "professional" | "credentials" | "code" | "contact" | "booking" | "social";
   isPrimary: boolean;
   descriptionEs: string;
   descriptionEn: string;
 }
 
 export interface CVSummaryArea {
-  label: string;
+  labelEs: string;
+  labelEn: string;
   icon: string;
-  description: string;
+  descriptionEs: string;
+  descriptionEn: string;
 }
 
 export interface CVData {
@@ -160,7 +170,8 @@ export interface CVData {
   downloadLabel: string;
   fileUrl: string;
   files: {
-    label: string;
+    labelEs: string;
+    labelEn: string;
     href: string;
     language: string;
     isPrimary: boolean;
@@ -170,7 +181,8 @@ export interface CVData {
     items: {
       title: string;
       href: string | null;
-      detail: string | null;
+      detailEs: string | null;
+      detailEn: string | null;
       tag?: string;
       filters?: string[];
     }[];
@@ -178,14 +190,17 @@ export interface CVData {
   courses: {
     group: string;
     items: {
-      title: string;
+      titleEs: string;
+      titleEn: string;
       href: string | null;
-      detail: string | null;
+      detailEs: string | null;
+      detailEn: string | null;
+      filters?: string[];
     }[];
   }[];
   education: {
     group: string;
-    items: string[];
+    items: { es: string; en: string }[];
   }[];
   snapshot: string[];
   summaryAreas: CVSummaryArea[];

@@ -16,8 +16,10 @@ export function LocaleProvider({ children, defaultLocale = "es" }: { children: R
 
   useEffect(() => {
     const saved = window.localStorage.getItem("locale") as Locale | null;
-    if (saved === "es" || saved === "en") setLocale(saved);
-  }, []);
+    const valid = saved === "es" || saved === "en" ? saved : defaultLocale;
+    setLocale(valid);
+    document.documentElement.lang = valid;
+  }, [defaultLocale]);
 
   useEffect(() => {
     window.localStorage.setItem("locale", locale);

@@ -20,9 +20,11 @@ export function TypewriterText({
   cursorClassName,
 }: TypewriterTextProps) {
   const [phraseIndex, setPhraseIndex] = useState(0);
-  const [charIndex, setCharIndex] = useState(0);
+  const [charIndex, setCharIndex] = useState(1);
   const [deleting, setDeleting] = useState(false);
-  const [displayText, setDisplayText] = useState("");
+  const [displayText, setDisplayText] = useState(
+    () => (phrases.find(Boolean) ?? "").slice(0, 1),
+  );
 
   const safePhrases = useMemo(() => phrases.filter(Boolean), [phrases]);
   const currentPhrase = safePhrases[phraseIndex] ?? "";
@@ -54,13 +56,6 @@ export function TypewriterText({
 
     return () => window.clearTimeout(timeout);
   }, [charIndex, currentPhrase, deleting, deletingSpeed, pauseMs, safePhrases.length, typingSpeed]);
-
-  useEffect(() => {
-    if (safePhrases.length) {
-      setDisplayText(safePhrases[0].slice(0, 1));
-      setCharIndex(1);
-    }
-  }, [safePhrases]);
 
   if (!safePhrases.length) return null;
 

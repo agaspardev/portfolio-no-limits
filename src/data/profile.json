@@ -2,9 +2,10 @@
   "name": "Antonio Gaspar",
   "shortName": "Antonio Gaspar",
   "role": "Profesional de Sistemas y Desarrollo",
-  "currentRole": "Integrador de Sistemas",
+  "currentRoleEs": "Integrador de Sistemas",
+  "currentRoleEn": "Systems Integrator",
   "currentCompany": "Innobyte S.A.",
-  "location": "Gran Santiago, Chile",
+  "location": "Santiago, Chile",
   "heroEyebrow": "NO LIMITS CONTROL CENTER",
   "tagline": "Soluciones Cloud, Automatización e Integración",
   "taglineSub": "Cloud · DevOps · IA · Ciberseguridad",
@@ -40,10 +41,10 @@
     { "label": "AI Enabled", "icon": "Sparkles" }
   ],
   "operationalSignature": [
-    { "order": "01", "text": "Automatizar antes de repetir" },
-    { "order": "02", "text": "Integrar antes de aislar" },
-    { "order": "03", "text": "Medir antes de escalar" },
-    { "order": "04", "text": "Asegurar desde el diseño" },
-    { "order": "05", "text": "Documentar para transferir conocimiento" }
+    { "order": "01", "textEs": "Automatizar antes de repetir", "textEn": "Automate before repeating" },
+    { "order": "02", "textEs": "Integrar antes de aislar", "textEn": "Integrate before isolating" },
+    { "order": "03", "textEs": "Medir antes de escalar", "textEn": "Measure before scaling" },
+    { "order": "04", "textEs": "Asegurar desde el diseño", "textEn": "Secure by design" },
+    { "order": "05", "textEs": "Documentar para transferir conocimiento", "textEn": "Document to transfer knowledge" }
   ]
 }

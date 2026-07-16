@@ -1,7 +1,6 @@
 "use client";
 
 import { useState, useEffect } from "react";
-import Link from "next/link";
 import { Menu, Moon, Sun } from "lucide-react";
 import { MobileMenu } from "./MobileMenu";
 import { useLocale } from "@/components/providers/LocaleProvider";
@@ -28,7 +27,6 @@ export function Header({ navigation }: HeaderProps) {
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
-  // Close mobile menu on resize to desktop
   useEffect(() => {
     const handleResize = () => {
       if (window.innerWidth >= 1024) setIsMobileOpen(false);
@@ -37,7 +35,6 @@ export function Header({ navigation }: HeaderProps) {
     return () => window.removeEventListener("resize", handleResize);
   }, []);
 
-  // Intersection observer for active section highlight
   useEffect(() => {
     const sections = navigation.map((n) => n.href.replace("#", ""));
     const observers: IntersectionObserver[] = [];
@@ -64,22 +61,25 @@ export function Header({ navigation }: HeaderProps) {
         className={cn(
           "fixed top-0 left-0 right-0 z-50 h-[72px] transition-all duration-300",
           isScrolled
-            ? theme === "dark"
-              ? "border-b border-slate-800/60 bg-[rgba(2,6,23,0.88)] backdrop-blur-[20px]"
-              : "border-b border-slate-200/80 bg-[rgba(248,250,252,0.96)] backdrop-blur-[20px]"
+            ? "border-b backdrop-blur-xl"
             : "bg-transparent",
         )}
+        style={{
+          borderColor: isScrolled ? "var(--border-subtle)" : "transparent",
+          background: isScrolled ? "var(--glass-bg)" : "transparent",
+        }}
         role="banner"
       >
         <div className="section-container flex h-full items-center justify-between">
           {/* Logo */}
-          <Link
-            href="/"
-            className="font-mono text-sm font-medium tracking-[0.18em] text-slate-50 hover:text-cyan-300 transition-colors focus-visible:outline-cyan-400"
-            aria-label="NO LIMITS — ir al inicio"
+          <a
+            href="#command-center"
+            className="font-mono text-sm font-medium tracking-[0.18em] transition-colors"
+            style={{ color: "var(--text-primary)" }}
+            aria-label={locale === "es" ? "NO LIMITS — ir al inicio" : "NO LIMITS — go to the top"}
           >
             NO LIMITS
-          </Link>
+          </a>
 
           {/* Desktop navigation */}
           <nav
@@ -95,50 +95,54 @@ export function Header({ navigation }: HeaderProps) {
                   key={item.href}
                   href={item.href}
                   className={cn(
-                    "px-3 py-1.5 text-sm font-medium transition-colors rounded-md",
-                    isActive
-                      ? "text-cyan-300"
-                      : theme === "dark"
-                        ? "text-slate-400 hover:text-slate-100"
-                        : "text-slate-500 hover:text-slate-900",
+                    "relative px-3 py-1.5 text-sm font-medium transition-colors rounded-md",
                   )}
+                  style={{
+                    color: isActive ? "var(--accent-cyan)" : "var(--text-muted)",
+                  }}
                   aria-current={isActive ? "page" : undefined}
                 >
                   {label}
+                  {isActive && (
+                    <span
+                      className="absolute bottom-0 left-1/2 -translate-x-1/2 h-0.5 w-4/5 rounded-full"
+                      style={{
+                        background: "var(--accent-cyan)",
+                        boxShadow: "0 0 8px var(--accent-cyan)",
+                      }}
+                    />
+                  )}
                 </a>
               );
             })}
           </nav>
 
-          {/* CTA + Mobile toggle */}
+          {/* Controls */}
           <div className="flex items-center gap-2 sm:gap-3">
             <button
               type="button"
               onClick={toggleTheme}
-              className={cn(
-                "theme-control flex h-9 w-9 items-center justify-center rounded-full border transition-colors",
-                theme === "dark"
-                  ? "border-slate-700/50 bg-slate-950/60 text-slate-300 hover:text-cyan-300 hover:border-cyan-400/40"
-                  : "border-slate-200/80 bg-white/90 text-slate-700 hover:text-cyan-600 hover:border-cyan-400/50",
-              )}
+              className="theme-control flex h-9 w-9 items-center justify-center rounded-full border transition-colors"
               aria-label={theme === "dark" ? (locale === "es" ? "Cambiar a tema claro" : "Switch to light theme") : (locale === "es" ? "Cambiar a tema oscuro" : "Switch to dark theme")}
-              title={theme === "dark" ? (locale === "es" ? "Tema claro" : "Light theme") : (locale === "es" ? "Tema oscuro" : "Dark theme")}
             >
               {theme === "dark" ? <Sun size={16} aria-hidden="true" /> : <Moon size={16} aria-hidden="true" />}
             </button>
 
-            <div className={cn("flex items-center rounded-full border p-1", theme === "dark" ? "border-slate-700/50 bg-slate-950/60" : "border-slate-200/80 bg-white/90")}>
+            <div
+              className="flex items-center rounded-full border p-1"
+              style={{
+                borderColor: "var(--border-subtle)",
+                background: "var(--glass-bg)",
+              }}
+            >
               <button
                 type="button"
                 onClick={() => setLocale("es")}
-                className={cn(
-                  "px-2.5 py-1 text-[11px] font-medium rounded-full transition-colors",
-                  locale === "es"
-                    ? "bg-cyan-400/15 text-cyan-300"
-                    : theme === "dark"
-                      ? "text-slate-400 hover:text-slate-200"
-                      : "text-slate-600 hover:text-slate-900",
-                )}
+                className="px-2.5 py-1 text-[11px] font-medium rounded-full transition-colors"
+                style={{
+                  color: locale === "es" ? "var(--accent-cyan)" : "var(--text-muted)",
+                  background: locale === "es" ? "rgba(0, 120, 212, 0.10)" : "transparent",
+                }}
                 aria-pressed={locale === "es"}
               >
                 ES
@@ -146,14 +150,11 @@ export function Header({ navigation }: HeaderProps) {
               <button
                 type="button"
                 onClick={() => setLocale("en")}
-                className={cn(
-                  "px-2.5 py-1 text-[11px] font-medium rounded-full transition-colors",
-                  locale === "en"
-                    ? "bg-cyan-400/15 text-cyan-300"
-                    : theme === "dark"
-                      ? "text-slate-400 hover:text-slate-200"
-                      : "text-slate-600 hover:text-slate-900",
-                )}
+                className="px-2.5 py-1 text-[11px] font-medium rounded-full transition-colors"
+                style={{
+                  color: locale === "en" ? "var(--accent-cyan)" : "var(--text-muted)",
+                  background: locale === "en" ? "rgba(0, 120, 212, 0.10)" : "transparent",
+                }}
                 aria-pressed={locale === "en"}
               >
                 EN
@@ -162,12 +163,7 @@ export function Header({ navigation }: HeaderProps) {
 
             <button
               onClick={() => setIsMobileOpen(true)}
-              className={cn(
-                "theme-control lg:hidden flex items-center justify-center w-10 h-10 rounded-lg border transition-colors",
-                theme === "dark"
-                  ? "border-slate-700/50 text-slate-300 hover:text-slate-50 hover:border-cyan-400/40"
-                  : "border-slate-200/80 text-slate-700 hover:text-slate-900 hover:border-cyan-400/40",
-              )}
+              className="theme-control lg:hidden flex items-center justify-center w-10 h-10 rounded-lg border transition-colors"
               aria-label={t.openMenu}
               aria-expanded={isMobileOpen}
               aria-controls="mobile-menu"
@@ -178,7 +174,6 @@ export function Header({ navigation }: HeaderProps) {
         </div>
       </header>
 
-      {/* Mobile menu */}
       <MobileMenu
         id="mobile-menu"
         isOpen={isMobileOpen}

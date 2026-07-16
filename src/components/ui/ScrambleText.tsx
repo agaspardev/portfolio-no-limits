@@ -27,10 +27,7 @@ export function ScrambleText({
   const chars = useMemo(() => charset.split(""), [charset]);
 
   useEffect(() => {
-    if (!active || reducedMotion) {
-      setDisplayText(text);
-      return;
-    }
+    if (!active || reducedMotion) return;
 
     const animate = (now: number) => {
       if (startRef.current === null) startRef.current = now;
@@ -67,5 +64,9 @@ export function ScrambleText({
     };
   }, [active, chars, durationMs, reducedMotion, text]);
 
-  return <span className={className}>{displayText}</span>;
+  return (
+    <span className={className}>
+      {active && !reducedMotion ? displayText : text}
+    </span>
+  );
 }
