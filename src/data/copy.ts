@@ -52,7 +52,7 @@ export const copy = {
         messagesRemaining: (n: number) => `${n} mensajes restantes`,
         limitReached: "Límite alcanzado",
         thinking: "procesando...",
-        error: "Lo siento, hubo un error. Por favor intenta de nuevo.",
+        error: "No pude procesar tu pregunta. Intenta preguntar sobre la experiencia, certificaciones o proyectos de Antonio.",
       },
     },
     sections: {
@@ -264,7 +264,7 @@ export const copy = {
         messagesRemaining: (n: number) => `${n} messages remaining`,
         limitReached: "Limit reached",
         thinking: "processing...",
-        error: "Sorry, there was an error. Please try again.",
+        error: "I couldn't process your question. Try asking about Antonio's experience, certifications, or projects.",
       },
     },
     sections: {

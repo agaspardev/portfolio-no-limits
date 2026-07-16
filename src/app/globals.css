@@ -435,6 +435,17 @@
     color: var(--terminal-text);
   }
 
+  .terminal-link {
+    color: var(--accent-cyan);
+    text-decoration: underline;
+    text-decoration-style: dotted;
+    text-underline-offset: 2px;
+    transition: color 0.15s;
+  }
+  .terminal-link:hover {
+    color: var(--accent-blue);
+  }
+
   .terminal-input-row {
     display: flex;
     align-items: center;

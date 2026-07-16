@@ -6,7 +6,7 @@ import { FileDown, ChevronDown, Send, CheckCircle2 } from "lucide-react";
 import { TypewriterText } from "@/components/ui/TypewriterText";
 import { useLocale } from "@/components/providers/LocaleProvider";
 import { useTerminalChat } from "@/hooks/useTerminalChat";
-import { normalizeTerminalText } from "@/lib/terminal-text";
+import { normalizeTerminalText, parseTerminalLinks } from "@/lib/terminal-text";
 import { copy } from "@/data/copy";
 import { staggerContainer, fadeUp, slideInRight } from "@/lib/animations";
 import type { Profile, CVData } from "@/types/portfolio";
@@ -167,6 +167,10 @@ function TerminalBlock({ role }: { role: string }) {
                 : msg.role === "assistant"
                   ? normalizeTerminalText(msg.content)
                   : msg.content;
+              // Parse URLs into clickable links for assistant messages
+              const linkParts = msg.role === "assistant" && !isError
+                ? parseTerminalLinks(display)
+                : null;
               return (
                 <div key={i} className="terminal-chat-line">
                   <span className="terminal-prompt">
@@ -180,7 +184,13 @@ function TerminalBlock({ role }: { role: string }) {
                     }
                     style={isError ? { color: "var(--status-red)" } : undefined}
                   >
-                    {display}
+                    {linkParts
+                      ? linkParts.map((part, j) =>
+                          part.href
+                            ? <a key={j} href={part.href} target="_blank" rel="noopener noreferrer" className="terminal-link">{part.text}</a>
+                            : <span key={j}>{part.text}</span>
+                        )
+                      : display}
                   </span>
                 </div>
               );
